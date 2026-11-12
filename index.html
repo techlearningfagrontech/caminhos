@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Farmácia Tech Learning | Versão 56 • Tela cheia com painel</title>
+<style>
+:root{--bg:#e9edef;--panel:#ffffff;--line:#cfd5d8;--text:#2d3a40;--muted:#68767d;--brand:#d71920;--brand2:#b51218;--soft:#f5f7f8;--warn:#fff4db;--shadow:0 12px 34px rgba(37,48,54,.16)}
+*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid rgba(215,25,32,.28);outline-offset:2px}
+header{height:66px;padding:0 18px;background:linear-gradient(180deg,#ffffff 0%,#f7f8f9 100%);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:20;box-shadow:0 4px 18px rgba(40,48,53,.06)}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}.logo{width:36px;height:36px;border-radius:50%;background:#fff;position:relative;box-shadow:0 0 0 1px #d6d8da,0 5px 14px rgba(55,60,64,.16)}.logo:before{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:#d71920;left:7px;top:7px;box-shadow:11px 0 0 #d71920,0 11px 0 #d71920,11px 11px 0 #d71920,22px 0 0 #7a7f85,22px 11px 0 #7a7f85,0 22px 0 #d71920,11px 22px 0 #7a7f85,22px 22px 0 #7a7f85}.logo:after{content:none}
+h1{font-size:18px;margin:0;color:#d71920;line-height:1.1}.sub{font-size:12px;color:var(--muted);margin-top:3px}.header-actions{display:flex;gap:8px;align-items:center}.icon-btn,.btn{border:1px solid #cfd2d4;background:#fff;color:#4b5054;border-radius:10px;padding:9px 11px;font-weight:700}.icon-btn:hover,.btn:hover{background:#f2f3f3;border-color:#b9bdc0}.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}.btn.primary:hover{background:var(--brand2)}
+.app{height:calc(100dvh - 66px);display:grid;grid-template-columns:330px minmax(0,1fr);min-height:0}aside{background:#fff;border-right:1px solid var(--line);overflow:auto;padding:16px;z-index:10;min-height:0;scrollbar-gutter:stable}.section-title{font-size:16px;margin:0 0 4px}.section-copy{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 14px}
+.route-tools{display:flex;gap:7px;margin-bottom:10px}.route-tools .btn{flex:1;padding:8px 7px;font-size:12px}.route-list{display:grid;gap:8px}.route-card{border:1px solid #d5dadd;border-radius:12px;padding:10px;background:linear-gradient(180deg,#ffffff,#f8f9f9);transition:.2s;box-shadow:0 2px 7px rgba(41,52,58,.04)}.route-card.active{border-color:#d71920;background:#fff;box-shadow:0 5px 16px rgba(215,25,32,.12)}.route-head{display:flex;gap:9px;align-items:flex-start}.route-head input{margin-top:3px;accent-color:#d71920}.swatch{width:12px;height:12px;border-radius:50%;margin-top:3px;flex:none}.route-name{font-size:13px;font-weight:800;line-height:1.25}.route-meta{font-size:11px;color:var(--muted);margin-top:2px}.route-details{display:none;margin:8px 0 0 25px;font-size:11px;line-height:1.45;color:#557386}.route-card.active .route-details{display:block}
+.sim-actions{display:grid;grid-template-columns:1.3fr 1fr;gap:8px;margin:14px 0 8px}.sim-actions .btn{padding:10px}.progress-wrap{margin:10px 0 4px}.progress-row{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted);margin-bottom:5px}.progress{height:8px;border-radius:99px;background:#e4e5e6;overflow:hidden}.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,#d71920,#7a7f85);transition:width .2s}.step-box{margin-top:10px;border-radius:12px;background:linear-gradient(180deg,#f9fafb,#f3f6f7);border:1px solid #d9dfe2;padding:12px;box-shadow:0 3px 10px rgba(38,51,57,.05)}.step-kicker{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#6e8998;font-weight:800}.step-title{font-size:14px;font-weight:800;margin:3px 0 4px}.step-desc{font-size:11px;line-height:1.5;color:#5b7585}.step-controls{display:flex;gap:6px;margin-top:9px}.step-controls .btn{font-size:11px;padding:7px;flex:1}.help-note{margin-top:14px;padding:10px;background:#f6fbfd;border-radius:10px;font-size:11px;line-height:1.5;color:#638092}.environment-box{margin-top:10px;border:1px solid #d8dfe2;border-radius:12px;background:#fff;padding:11px;box-shadow:0 3px 10px rgba(38,51,57,.05)}.environment-title{font-size:12px;font-weight:800;color:#d71920;margin-bottom:7px}.environment-list{display:grid;gap:5px;max-height:210px;overflow:auto;overscroll-behavior:contain}.environment-item{display:flex;gap:7px;align-items:flex-start;font-size:10px;line-height:1.35;color:#334b55;background:linear-gradient(180deg,#f7f9fa,#eef3f5);border:1px solid #dde5e8;border-radius:8px;padding:7px 8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}.environment-item b{color:#285a74}.step-status{margin-top:7px;padding:7px 8px;border-radius:8px;background:#fff7dd;color:#805f13;font-size:10px;font-weight:700}.step-status.done{background:#e8f7ef;color:#297252}.step-status.moving{background:#e8f2fb;color:#246c98}.btn[disabled]{opacity:.48;cursor:not-allowed;background:#eef3f5!important;color:#8396a0!important;border-color:#d7e1e5!important}
+.viewer{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 18%,#d7e0e4 0%,#a6b6be 45%,#7e919b 100%)}#scene{position:absolute;inset:0}.hud{position:absolute;left:15px;top:15px;display:grid;gap:8px;max-width:min(460px,70%);pointer-events:none}.hud-card{background:rgba(255,255,255,.91);backdrop-filter:blur(10px);border:1px solid rgba(199,207,211,.95);box-shadow:var(--shadow);border-radius:12px;padding:10px 13px}.hud-title{font-weight:800;color:#d71920}.hud-small{font-size:11px;color:#698696;margin-top:3px}.room-notice{display:none;background:rgba(255,248,217,.97);border-color:#efcf74}.room-notice.show{display:block;animation:fadeNotice 2.8s ease forwards}@keyframes fadeNotice{0%{opacity:0;transform:translateY(-4px)}10%,80%{opacity:1;transform:none}100%{opacity:0}}
+.camera-bar{position:absolute;right:14px;bottom:14px;background:rgba(255,255,255,.94);border:1px solid #d4d6d8;box-shadow:var(--shadow);padding:8px;border-radius:12px;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.camera-bar .btn{font-size:11px;padding:8px}.camera-bar .btn.active{background:#d71920;color:#fff;border-color:#d71920}.top-actions{position:absolute;right:14px;top:14px;display:flex;gap:7px}.top-actions .btn{background:rgba(255,255,255,.94)}
+.legend3d{position:absolute;left:15px;bottom:15px;background:rgba(255,255,255,.95);border:1px solid #d6d8da;border-radius:10px;padding:10px 12px;font-size:10px;color:#607d8d;pointer-events:none;max-width:320px;line-height:1.45}.legend3d b{color:#d71920}.legend3d span{display:inline-block;margin:0 7px 4px 0;padding:2px 7px;border-radius:999px;background:#f1f7fb;color:#315f77;font-weight:700}.error{position:absolute;inset:0;display:none;place-items:center;background:#eef7fb;padding:30px;text-align:center;z-index:50}.error.show{display:grid}.error-box{max-width:560px;background:#fff;border:1px solid #d4e7ef;border-radius:16px;padding:24px;box-shadow:var(--shadow)}.error-box h2{margin-top:0;color:#d71920}.modal{position:fixed;inset:0;background:rgba(18,49,66,.42);display:none;place-items:center;z-index:100;padding:16px}.modal.show{display:grid}.modal-card{width:min(520px,100%);max-height:min(84vh,680px);overflow:auto;background:#fff;border-radius:16px;padding:18px;box-shadow:0 25px 80px rgba(18,49,66,.3)}.modal-card h2{margin:0 0 8px;font-size:18px}.modal-card p,.modal-card li{font-size:13px;line-height:1.55;color:#537182}.modal-card .btn{width:100%;margin-top:10px}.complete{position:absolute;inset:auto 50% 50% auto;transform:translate(50%,50%);display:none;width:min(390px,calc(100% - 32px));background:#fff;border:1px solid #d4e7ef;border-radius:16px;box-shadow:0 25px 70px rgba(25,73,98,.28);padding:18px;text-align:center;z-index:35}.complete.show{display:block}.complete h2{margin:0 0 6px;color:#d71920}.complete p{font-size:12px;color:#647f8f}.complete-actions{display:flex;gap:8px}.complete-actions .btn{flex:1}
+
+@media(hover:hover) and (pointer:fine){.route-card:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(36,48,54,.08)}.btn:hover,.icon-btn:hover{transform:translateY(-1px)}}
+.btn,.icon-btn{transition:background-color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease}
+.viewer canvas{display:block;outline:none}.btn:focus-visible,.icon-btn:focus-visible,input:focus-visible{outline:3px solid rgba(215,25,32,.28);outline-offset:2px}
+@media(max-width:850px){header{height:58px;padding:0 11px}.app{height:calc(100dvh - 58px);grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}aside{max-height:44vh;border-right:0;border-bottom:1px solid var(--line);padding:11px}.route-list{grid-template-columns:repeat(2,minmax(0,1fr))}.route-details{display:none!important}.viewer{min-height:350px}h1{font-size:15px}.sub{display:none}.header-actions .text{display:none}.camera-bar{left:10px;right:10px;bottom:10px;justify-content:center}.legend3d{display:none}.hud{left:10px;top:10px;max-width:65%}.top-actions{right:10px;top:10px}.sim-actions{margin-top:9px}}
+@media(max-width:520px){.route-list{grid-template-columns:1fr}.camera-bar .btn{padding:7px;font-size:10px;min-height:40px}.hud-card{padding:8px 10px}.top-actions .btn{font-size:10px;padding:7px}.section-copy{display:block}.sim-actions{grid-template-columns:1fr}.step-controls{flex-wrap:wrap}.step-controls .btn{min-width:calc(50% - 4px)}.environment-list{max-height:180px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+body.presentation .app{grid-template-columns:0 minmax(0,1fr)}body.presentation aside{display:none}body.presentation .hud{max-width:55%}@media(max-width:850px){body.presentation .app{grid-template-rows:minmax(0,1fr)}}
+
+/* V43: layout adaptativo sem alterar escala ou geometria dos objetos 3D. */
+html{-webkit-text-size-adjust:100%}button{touch-action:manipulation}#scene{touch-action:none;min-width:0;min-height:0}.viewer{min-width:0;min-height:0}.app{min-width:0}
+@media(max-width:850px){
+ html,body{height:auto;min-height:100%;overflow-x:hidden}
+ header{position:sticky;top:0;min-height:58px;height:auto;padding:8px 12px;flex-wrap:wrap}
+ .app{height:auto;min-height:calc(100dvh - 58px);display:flex;flex-direction:column}
+ .viewer{order:0;flex:none;height:clamp(380px,62dvh,720px);min-height:0;width:100%}
+ aside{order:1;max-height:none;overflow:visible;border-right:0;border-top:1px solid var(--line);padding:14px;width:100%;scrollbar-gutter:auto}
+ .route-details{display:block!important}
+ .route-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .camera-bar{max-width:calc(100% - 16px);bottom:8px;left:8px;right:8px;gap:4px;padding:6px}
+ .camera-bar .btn{min-height:38px}
+ .top-actions{right:8px;top:8px}
+ .hud{left:8px;top:8px;max-width:calc(100% - 150px)}
+ body.presentation .app{display:flex}body.presentation .viewer{height:calc(100dvh - 58px)}body.presentation aside{display:none}
+}
+@media(max-width:520px){
+ header{gap:5px}.brand{flex:1;min-width:145px}.logo{width:30px;height:30px;transform:scale(.83);transform-origin:left center}h1{font-size:14px}
+ .header-actions{gap:4px}.icon-btn{padding:8px;min-height:40px;font-size:12px}
+ .viewer{height:clamp(390px,60dvh,650px)}
+ .route-list{grid-template-columns:1fr}.route-details{display:block!important}
+ .hud{max-width:calc(100% - 100px)}.hud-card{padding:7px 8px}.hud-title{font-size:12px}.hud-small{font-size:10px}
+ .top-actions{max-width:96px;flex-wrap:wrap;justify-content:flex-end}.top-actions .btn{font-size:10px;min-height:34px;padding:6px}
+ .camera-bar .btn{font-size:10px;flex:1 1 auto;min-height:42px;padding:6px}
+ .step-controls .btn{min-height:44px}.sim-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .environment-list{max-height:none}.section-copy{display:block}
+ body.presentation .viewer{height:calc(100dvh - 58px)}
+}
+@media(orientation:landscape) and (max-height:520px) and (max-width:1000px){.viewer{height:calc(100dvh - 58px);min-height:280px}.camera-bar{bottom:5px}.hud{max-width:45%}}
+
+/* V44: ações sempre acessíveis, seleção explícita e feedback de fluxo. */
+.environment-picker{margin:12px 0;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.environment-picker label{display:block;font-size:12px;margin-bottom:6px}.environment-picker select{width:100%;padding:11px;border:1px solid #c5d1d8;border-radius:9px;background:white;color:#253f4c}
+.environment-picker p{font-size:11px;line-height:1.5;margin:6px 0 0;color:#657b86}
+.route-card{cursor:pointer}.route-card.current-route{outline:2px solid #d71920;outline-offset:1px}
+.step-box{scroll-margin-top:90px}.step-status{line-height:1.55}.step-controls .btn{min-height:44px}
+.mobile-dock{display:none}
+@media(max-width:850px){body{padding-bottom:80px}.mobile-dock{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;align-items:center;gap:8px;background:rgba(255,255,255,.98);padding:10px max(12px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom));box-shadow:0 -4px 18px #122a3a22;border-top:1px solid #dce5ea}.mobile-dock-label{flex:1;min-width:0;font-size:11px;font-weight:700;line-height:1.35}.mobile-dock .btn{min-height:46px;padding:8px 10px;font-size:12px}.mobile-dock .btn:disabled{opacity:.55}}
+@media(max-width:520px){.mobile-dock-label{display:none}.mobile-dock .btn{flex:1}}
+body.presentation .mobile-dock{display:none}
+
+.arrival-panel{position:absolute;z-index:85;right:clamp(10px,2vw,26px);top:clamp(10px,2vw,24px);width:min(420px,calc(100% - 20px));max-height:calc(100% - 25px);overflow:auto;padding:18px;background:#fff;border:2px solid #d71920;border-radius:16px;box-shadow:0 12px 45px #0007;color:#243844}
+.arrival-panel[hidden],.reopen-arrival[hidden]{display:none!important}.arrival-panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#d71920;font-size:12px}.arrival-panel-close{font-size:24px;background:transparent;border:0;cursor:pointer;color:#53616a}.arrival-panel h2{font-size:19px;margin:8px 0}.arrival-panel p{font-size:13px;line-height:1.5;margin:8px 0}.arrival-panel .btn{width:100%;margin-top:8px;min-height:43px}.reopen-arrival{position:fixed;z-index:90;right:15px;bottom:88px;background:#d71920;color:white;border:0;border-radius:99px;padding:12px 16px;box-shadow:0 4px 18px #0004;font-weight:700;cursor:pointer}
+@media(max-width:850px){.arrival-panel{top:8px;right:8px;width:calc(100% - 16px);max-height:calc(100% - 16px);padding:13px}.arrival-panel h2{font-size:16px}.arrival-panel p{font-size:12px}}
+
+/* V49: layout multiplataforma e controles touch sem alterar a escala do modelo. */
+:root{color-scheme:light}html{overflow-x:clip}body{min-width:280px}#scene canvas{width:100%;height:100%;display:block;touch-action:none}button,select{min-height:40px}button{-webkit-tap-highlight-color:transparent}aside,.modal-card,.arrival-panel{-webkit-overflow-scrolling:touch}
+@media(min-width:851px) and (max-width:1199px){.app{grid-template-columns:clamp(275px,28vw,320px) minmax(0,1fr)}aside{padding:12px}.route-list{gap:6px}.camera-bar{max-width:calc(100% - 20px)}}
+@media(min-width:1200px){.app{grid-template-columns:clamp(310px,25vw,380px) minmax(0,1fr)}}
+@media(max-width:850px){header{z-index:75}.viewer{isolation:isolate}.hud{z-index:4}.top-actions{z-index:6}.camera-bar{z-index:7}.route-list{gap:8px}.route-card{min-width:0}.arrival-panel{z-index:9}.modal{padding:12px}.modal-card{max-height:calc(100dvh - 24px)}.mobile-dock{padding-bottom:max(10px,env(safe-area-inset-bottom))}}
+@media(max-width:600px){.viewer{height:clamp(360px,56dvh,580px)}.camera-bar{gap:3px}.camera-bar .btn{white-space:normal;line-height:1.2}.hud{max-width:calc(100% - 105px)}.hud-small{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.route-tools{flex-wrap:wrap}.route-tools .btn{min-width:27%}.reopen-arrival{bottom:calc(80px + env(safe-area-inset-bottom))}}
+@media(max-width:380px){.header-actions .btn,.header-actions .icon-btn{padding:6px}.top-actions{max-width:84px}.top-actions .btn{font-size:9px}.hud{max-width:calc(100% - 92px)}.camera-bar .btn{font-size:9px;padding:5px}.mobile-dock .btn{font-size:11px}}
+@media(max-width:850px) and (orientation:landscape) and (max-height:540px){header{position:relative}.viewer{height:max(310px,calc(100dvh - 58px))}.arrival-panel{max-height:calc(100% - 16px)}.hud-small{display:none}}
+@media(pointer:coarse){.btn,.icon-btn,.route-card,select{min-height:44px}.route-head input{width:18px;height:18px}.environment-picker select{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.route-card,.btn,.icon-btn{transition:none}}
+
+/* V55: menu unificado, abas acessíveis e palco 3D com prioridade visual. */
+.app{grid-template-columns:minmax(310px,350px) minmax(0,1fr)}
+aside{padding:0;display:flex;flex-direction:column;overflow:hidden;background:#fff;box-shadow:3px 0 15px #1b31300d}
+.sidebar-top{padding:15px 16px 10px;display:flex;flex-direction:column;gap:3px}
+.sidebar-top strong{font-size:15px;color:#26353c}.sidebar-top span{font-size:11px;color:#667982}
+.sidebar-tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px 12px 10px;border-bottom:1px solid #e1e5e7;background:#fff;flex:none}
+.sidebar-tab{border:1px solid #d7dde0;background:#f4f6f7;color:#4d626d;border-radius:9px;min-height:43px;padding:8px 5px;font-weight:750;font-size:12px;cursor:pointer}
+.sidebar-tab.active{background:#d71920;border-color:#d71920;color:white;box-shadow:0 3px 10px #d7192026}
+.sidebar-tab:focus-visible{outline:3px solid #e9979a;outline-offset:2px}
+.sidebar-panel{display:none;overflow-y:auto;overflow-x:hidden;padding:15px;min-height:0;overscroll-behavior:contain;flex:1}
+.sidebar-panel.active{display:block}
+.sidebar-panel .route-list{grid-template-columns:1fr}
+.sidebar-panel .route-card{padding:12px}
+.sidebar-panel .route-name{font-size:13px}
+.sidebar-panel .environment-picker{margin:0 0 12px}
+.sidebar-panel .sim-actions{margin:8px 0 12px}
+.sidebar-panel .step-box{margin-top:12px}
+.sidebar-panel .step-controls{flex-wrap:wrap}
+.sidebar-panel .step-controls #nextStep{flex:1 1 100%;order:-1;min-height:46px;font-size:13px}
+.sidebar-panel .environment-list{max-height:none}
+.sidebar-panel .help-note{font-size:11px;margin-bottom:14px}
+.viewer{min-width:0;min-height:0}
+.hud{max-width:min(350px,48%)}
+@media(min-width:851px) and (max-width:1199px){.app{grid-template-columns:310px minmax(0,1fr)}}
+@media(min-width:1200px){.app{grid-template-columns:350px minmax(0,1fr)}}
+@media(max-width:850px){
+ .app{display:flex;flex-direction:column;height:auto;min-height:calc(100dvh - 58px)}
+ .viewer{order:0;flex:none;height:clamp(380px,55dvh,650px);min-height:0}
+ aside{order:1;display:flex;flex-direction:column;max-height:none;overflow:visible;border-top:1px solid #d9e0e3;border-bottom:0;padding:0}
+ .sidebar-panel{overflow:visible;flex:auto;padding:12px 14px 20px}
+ .sidebar-top{padding:12px 14px 8px}
+ .sidebar-tabs{position:sticky;top:0;z-index:12;padding:6px 12px;background:#fff}
+ .sidebar-panel .route-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .sidebar-panel .environment-list{max-height:270px}
+ body.presentation aside{display:none}
+}
+@media(max-width:520px){.sidebar-panel .route-list{grid-template-columns:1fr}.sidebar-tab{font-size:11px}.viewer{height:clamp(360px,55dvh,560px)}}
+@media(orientation:landscape) and (max-height:520px) and (max-width:1000px){.viewer{height:calc(100dvh - 58px)}}
+/* V56: tela cheia inclui cabeçalho, painel de controle e visualizador 3D. */
+html:fullscreen,html:-webkit-full-screen{width:100%;height:100%;overflow:hidden;background:var(--bg)}
+html:fullscreen body,html:-webkit-full-screen body{height:100dvh;overflow:hidden;padding-bottom:0!important}
+html:fullscreen header,html:-webkit-full-screen header{display:flex!important}
+html:fullscreen .app,html:-webkit-full-screen .app{height:calc(100dvh - 66px);min-height:0;display:grid;grid-template-columns:clamp(280px,25vw,370px) minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+html:fullscreen .app aside,html:-webkit-full-screen .app aside{display:flex!important;order:0;max-height:none;overflow:hidden;border-right:1px solid var(--line);border-top:0;min-height:0}
+html:fullscreen .app .viewer,html:-webkit-full-screen .app .viewer{order:1;width:100%;height:100%;min-height:0;flex:auto}
+html:fullscreen .sidebar-panel,html:-webkit-full-screen .sidebar-panel{overflow-y:auto;flex:1;min-height:0}
+html:fullscreen .mobile-dock,html:-webkit-full-screen .mobile-dock{display:none!important}
+@media(max-width:850px){
+ html:fullscreen .app,html:-webkit-full-screen .app{height:calc(100dvh - 58px);grid-template-columns:minmax(220px,36%) minmax(0,1fr)}
+ html:fullscreen .app aside,html:-webkit-full-screen .app aside{width:auto}
+ html:fullscreen .sidebar-top,html:-webkit-full-screen .sidebar-top{padding:8px}
+ html:fullscreen .sidebar-tabs,html:-webkit-full-screen .sidebar-tabs{padding:5px}
+ html:fullscreen .sidebar-panel,html:-webkit-full-screen .sidebar-panel{padding:9px}
+}
+@media(max-width:600px){
+ html:fullscreen body,html:-webkit-full-screen body{overflow:hidden}
+ html:fullscreen .app,html:-webkit-full-screen .app{display:flex;flex-direction:column;height:calc(100dvh - 58px)}
+ html:fullscreen .app .viewer,html:-webkit-full-screen .app .viewer{order:0;flex:1 1 52%;height:auto;min-height:170px}
+ html:fullscreen .app aside,html:-webkit-full-screen .app aside{order:1;flex:1 1 48%;width:100%;max-height:48%;min-height:0;border-top:1px solid var(--line);border-right:0}
+ html:fullscreen .sidebar-top,html:-webkit-full-screen .sidebar-top{display:none}
+ html:fullscreen .sidebar-panel .route-list,html:-webkit-full-screen .sidebar-panel .route-list{grid-template-columns:1fr}
+}
+</style>
+<style>
+.arrival-modal{position:fixed;inset:0;z-index:150;background:rgba(10,22,31,.72);display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(5px)}
+.arrival-modal.show{display:flex}.arrival-card{width:min(510px,100%);max-height:88dvh;overflow-y:auto;background:#fff;border-radius:18px;padding:clamp(18px,4vw,28px);box-shadow:0 22px 80px #0006;border-top:5px solid #d71920}.arrival-eyebrow{font-size:12px;font-weight:800;color:#d71920;letter-spacing:.06em;text-transform:uppercase}.arrival-card h2{font-size:clamp(20px,4vw,26px);line-height:1.2;margin:10px 0 17px;color:#182c36}.arrival-section{background:#f4f7f9;border-radius:12px;padding:13px 15px;margin:10px 0}.arrival-section strong{font-size:13px;color:#263b46}.arrival-section p{font-size:14px;color:#435964;line-height:1.55;margin:6px 0 0}.arrival-action{width:100%;min-height:48px;margin-top:16px;font-weight:750}.arrival-note{font-size:12px;color:#6b7d87;margin-top:12px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo" aria-hidden="true"></div><div><h1>Farmácia Tech Learning</h1><div class="sub">Trajetos por Processo • Ambiente 3D revisado</div></div></div>
+  <div class="header-actions"><button class="icon-btn" id="presentationBtn">◧ <span class="text">Apresentação</span></button><button class="icon-btn" id="helpBtn">? <span class="text">Como usar</span></button><button class="icon-btn" id="fullscreenBtn">⛶ <span class="text">Tela cheia</span></button></div>
+</header>
+<div class="app">
+<aside id="controlSidebar" aria-label="Painel de controle do simulador">
+  <div class="sidebar-top"><strong>Painel de controle</strong><span>Escolha o processo e acompanhe as etapas</span></div>
+  <div class="sidebar-tabs" role="tablist" aria-label="Navegação do painel"><button type="button" class="sidebar-tab active" id="tabRoutes" role="tab" aria-controls="panelRoutes" aria-selected="true">① Rotas</button><button type="button" class="sidebar-tab" id="tabStages" role="tab" aria-controls="panelStages" aria-selected="false">② Etapa e ambiente</button></div>
+  <section class="sidebar-panel active" id="panelRoutes" role="tabpanel" aria-labelledby="tabRoutes">
+  <h2 class="section-title">🚶 Rotas de trabalho</h2>
+  <p class="section-copy">Selecione somente os processos que deseja visualizar. Para iniciar o percurso, mantenha ao menos uma rota marcada.</p>
+  <div class="route-tools"><button class="btn" id="showAll">Mostrar todas</button><button class="btn" id="hideAll">Ocultar todas</button><button class="btn" id="clearRoutes">Limpar</button></div>
+  <div class="route-list" id="routeList"></div></section><section class="sidebar-panel" id="panelStages" role="tabpanel" aria-labelledby="tabStages"><div class="environment-picker"><label for="roomPicker"><strong>Visualizar ambiente</strong></label><select id="roomPicker" aria-label="Escolha um ambiente para visualizar"></select><p id="roomPickerHint">A seleção muda a visualização, mas não pula etapas do percurso.</p></div>
+  <div class="sim-actions"><button class="btn primary" id="playBtn">▶ Iniciar percurso</button><button class="btn" id="resetBtn">↻ Reiniciar</button></div>
+  <div class="progress-wrap"><div class="progress-row"><span id="progressText">Aguardando início</span><span id="progressPct">0%</span></div><div class="progress"><span id="progressBar"></span></div></div>
+  <div class="step-box"><div class="step-kicker" id="stepKicker">Etapa</div><div class="step-title" id="stepTitle">Selecione uma rota</div><div class="step-desc" id="stepDesc">Acompanhe o mini farmacêutico e observe onde cada etapa acontece.</div><div class="step-status" id="stepStatus">A etapa atual precisa ser concluída antes de avançar.</div><div class="step-controls"><button class="btn" id="prevStep">Etapas anteriores ✓</button><button class="btn primary" id="nextStep">✓ Concluir etapa</button><button class="btn" id="speedBtn">0,35×</button></div></div><div class="environment-box"><div class="environment-title">🔎 Neste ambiente</div><div class="environment-list" id="environmentList"><div class="environment-item">Selecione uma rota para visualizar os itens do setor.</div></div></div>
+  <div class="help-note"><strong>Dica:</strong> Esta versão recebeu revisão de front-end, mais equipamentos por setor e melhor leitura visual.  cada etapa precisa ser encerrada antes da próxima. O farmacêutico caminha automaticamente para o setor seguinte. Cada cômodo recebeu mais contraste visual para facilitar a identificação e a planta permanece aberta por cima, sem telhado. Versão com corredores independentes entre os setores e mobiliário reorganizado, equipamentos mais próximos dos reais e ambientação de farmácia magistral.</div>
+  </section>
+</aside>
+<main class="viewer" id="viewer">
+  <div id="scene" aria-label="Ambiente tridimensional interativo da Farmácia Tech Learning"></div>
+  <div class="hud"><div class="hud-card"><div class="hud-title" id="hudTitle">Farmácia Tech Learning</div><div class="hud-small" id="hudSmall">Escolha uma rota para iniciar a experiência. Use a visão geral para reconhecer os setores e a visão de acompanhamento para seguir o avatar.</div></div><div class="hud-card room-notice" id="roomNotice"></div></div>
+  <div class="top-actions"><button class="btn" id="labelsBtn">🏷 Rótulos</button><button class="btn" id="fitBtn">⤢ Recentrar</button></div>
+  <div class="camera-bar"><button class="btn active" data-camera="follow">👤 Acompanhar</button><button class="btn" data-camera="free">🧭 Visão livre</button><button class="btn" data-camera="overview">▦ Visão geral</button></div>
+  <div class="legend3d"><b>Leitura rápida:</b><br><span>Mobiliário reorganizado</span><span>Equipamentos mais realistas</span><span>Farmacêutico paramentado</span><br>Corredores e portas internas conectam os ambientes • Faixas coloridas = trajetos • Marcadores = etapas • Painéis suspensos mostram o que existe em cada ambiente.</div>
+  <div class="complete" id="completeBox" role="status" aria-live="polite"><h2>Percurso concluído</h2><p>Você acompanhou todas as etapas deste processo.</p><div class="complete-actions"><button class="btn primary" id="replayBtn">Refazer percurso</button><button class="btn" id="overviewBtn">Visão geral</button></div></div>
+  <div class="error" id="errorBox" role="alert"><div class="error-box"><h2>Não foi possível iniciar o ambiente 3D</h2><p>Verifique sua conexão com a internet para carregar a biblioteca Three.js e confirme se a aceleração gráfica está habilitada. Use uma versão atualizada do Chrome ou Edge.</p></div></div>
+<section id="arrivalPanel" class="arrival-panel" aria-live="assertive" aria-label="Orientações da etapa" hidden>
+ <div class="arrival-panel-head"><strong id="panelStage">Orientações do ambiente</strong><button id="panelDismiss" class="arrival-panel-close" type="button" aria-label="Fechar orientação">×</button></div>
+ <h2 id="panelTitle">Ambiente</h2><p><b>O que fazer:</b> <span id="panelTask"></span></p><p><b>Por quê:</b> <span id="panelWhy"></span></p>
+ <button id="panelConfirm" class="btn primary" type="button">Entendi, iniciar esta etapa</button>
+</section></main>
+</div>
+<button id="reopenArrival" class="reopen-arrival" type="button" hidden>ⓘ Ver orientação da etapa</button>
+<div class="mobile-dock" id="mobileDock"><div class="mobile-dock-label" id="dockLabel">Escolha uma rota para começar</div><button class="btn primary" id="dockAction">▶ Iniciar percurso</button><button class="btn" id="dockSteps">Ver etapas</button></div>
+<div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><div class="modal-card"><h2 id="helpTitle">Como usar</h2><ol><li>Marque a rota desejada. A rota destacada em vermelho será a ativa.</li><li>Clique em <strong>Iniciar percurso</strong>. Em celulares, use o botão fixo na parte inferior.</li><li>Ao chegar a cada setor, leia o aviso sobre o que será feito e por que isso é importante. Clique em <strong>Entendi, iniciar esta etapa</strong>.</li><li>Acompanhe o mini farmacêutico pelos setores.</li><li>Use os modos de câmera para mudar a perspectiva.</li><li>Clique em equipamentos para visualizar sua função.</li><li>Clique em <strong>Concluir etapa</strong> para liberar a próxima. Não é possível pular etapas.</li><li>Após a conclusão, o mini farmacêutico caminhará automaticamente até o setor seguinte.</li><li>Consulte a lista “Neste ambiente” e clique nos equipamentos 3D para conhecer suas funções.</li></ol><button class="btn primary" id="closeHelp">Entendi</button></div></div>
+<div class="arrival-modal" id="arrivalModal" role="dialog" aria-modal="true" aria-labelledby="arrivalTitle" aria-describedby="arrivalTask">
+  <div class="arrival-card"><div class="arrival-eyebrow" id="arrivalStage">Etapa do processo</div><h2 id="arrivalTitle">Ambiente</h2>
+  <div class="arrival-section"><strong>🧪 O que o farmacêutico vai fazer?</strong><p id="arrivalTask"></p></div>
+  <div class="arrival-section"><strong>🎯 Por que esta etapa é importante?</strong><p id="arrivalWhy"></p></div>
+  <button class="btn primary arrival-action" id="arrivalContinue">Entendi, iniciar esta etapa →</button>
+  <div class="arrival-note">Após realizar a atividade, selecione “Concluir etapa” para continuar o percurso.</div></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const ROOMS=[
+ {name:'Recepção e dispensação',x:0,z:4,w:8,d:6,type:'atendimento'},
+ {name:'Atendimento farmacêutico / Avaliação da prescrição',x:8,z:4,w:6,d:6,type:'atendimento'},
+ {name:'Controle de qualidade',x:14,z:4,w:6,d:6,type:'controle'},
+ {name:'Almoxarifado',x:20,z:4,w:6,d:6,type:'estoque'},
+ {name:'Quarentena',x:0,z:10,w:6,d:6,type:'estoque'},
+ {name:'Insumos aprovados',x:6,z:10,w:6,d:6,type:'estoque'},
+ {name:'Pesagem e fracionamento',x:12,z:10,w:7,d:6,type:'pesagem'},
+ {name:'Laboratório de sólidos',x:19,z:10,w:7,d:6,type:'laboratorio'},
+ {name:'Laboratório de semissólidos e líquidos',x:0,z:16,w:9,d:6,type:'laboratorio'},
+ {name:'Paramentação',x:9,z:16,w:5,d:6,type:'apoio'},
+ {name:'Higienização',x:14,z:16,w:6,d:6,type:'apoio'},
+ {name:'Expedição',x:20,z:16,w:6,d:6,type:'expedicao'},
+ {name:'Circulação técnica',x:0,z:22,w:9,d:5,type:'circulacao'},
+ {name:'Laboratório de homeopatia',x:9,z:22,w:7,d:5,type:'laboratorio'},
+ {name:'Embalagens',x:16,z:22,w:5,d:5,type:'estoque'},
+ {name:'Recebimento de insumos',x:21,z:22,w:5,d:5,type:'recebimento'}
+];
+// Planta com corredores independentes: as fileiras de salas foram afastadas.
+ROOMS.forEach((r,i)=>{r.z += i<4?0:i<8?3:i<12?6:9;});
+// Circulação perimetral: duas espinhas laterais ligam os quatro corredores.
+// As coordenadas dos 16 ambientes originais permanecem inalteradas.
+const CORRIDOR_RIGHT_X=27.45;
+const CORRIDOR_LEFT_X=-1.55;
+const CORRIDOR_X=CORRIDOR_RIGHT_X;
+const corridorZ=id=>ROOMS[id].z-1.45;
+const roomCenter=id=>{const r=ROOMS[id];return new THREE.Vector3(r.x+r.w/2,.18,r.z+r.d/2);};
+const roomEntrance=id=>{const r=ROOMS[id];return new THREE.Vector3(r.x+r.w/2,.18,r.z+.05);};
+const hallEntry=id=>{const r=ROOMS[id];return new THREE.Vector3(r.x+r.w/2,.18,corridorZ(id));};
+const corridorPoint=(x,z)=>new THREE.Vector3(x,.18,z);
+const ROUTES=[
+ {id:'atendimento',name:'Atendimento e dispensação',color:0x1685c4,hex:'#1685c4',stops:[0,1,0],objective:'Receber, avaliar e concluir o atendimento do cliente.',description:'Do acolhimento à avaliação farmacêutica e retorno à dispensação.'},
+ {id:'recebimento',name:'Recebimento e liberação de insumos',color:0xed9a25,hex:'#ed9a25',stops:[15,4,2,5,3],objective:'Controlar a entrada, quarentena, análise e liberação dos insumos.',description:'Percurso técnico do recebimento até o armazenamento de insumos liberados.'},
+ {id:'solidos',name:'Manipulação de sólidos',color:0x1eac7a,hex:'#1eac7a',stops:[0,1,9,5,6,7,2,11],objective:'Representar a sequência de produção de formas farmacêuticas sólidas.',description:'Avaliação, paramentação, insumos, pesagem, manipulação, qualidade e expedição.'},
+ {id:'semissolidos',name:'Manipulação de semissólidos e líquidos',color:0x9a62cb,hex:'#9a62cb',stops:[0,1,9,5,6,8,2,11],objective:'Representar a produção de semissólidos e líquidos.',description:'Fluxo do atendimento ao laboratório, controle de qualidade e expedição.'},
+ {id:'higienizacao',name:'Higienização e apoio',color:0xe76d79,hex:'#e76d79',stops:[10,12,9,8,7],objective:'Demonstrar o fluxo de apoio e higienização entre áreas técnicas.',description:'Percurso conceitual pelas áreas de higienização, circulação e laboratórios.'}
+];
+const STEP_TEXT={0:'Receber o cliente e registrar a demanda ou prescrição.',1:'Realizar a avaliação farmacêutica da prescrição e validar requisitos.',2:'Executar ou registrar o controle de qualidade conforme o processo.',3:'Armazenar os insumos liberados de forma adequada.',4:'Manter o material em quarentena até sua liberação.',5:'Separar os insumos aprovados necessários para a produção.',6:'Realizar a pesagem e o fracionamento conforme a ordem de manipulação.',7:'Executar a manipulação das formas farmacêuticas sólidas.',8:'Executar a manipulação de semissólidos e líquidos.',9:'Realizar a paramentação antes do acesso às áreas técnicas.',10:'Executar atividades de higienização e apoio.',11:'Conferir e encaminhar o produto para expedição.',12:'Utilizar a circulação técnica respeitando o fluxo definido.',13:'Executar atividades no laboratório de homeopatia.',14:'Separar ou armazenar materiais de embalagem.',15:'Receber os insumos e iniciar a conferência de entrada.'};
+const STEP_WHY={
+0:'Garantir atendimento correto, identificação do pedido e rastreabilidade desde o primeiro contato.',
+1:'Identificar inconsistências e confirmar a adequação da prescrição antes de iniciar a produção.',
+2:'Verificar se os insumos ou preparações atendem aos critérios de qualidade aplicáveis antes da liberação.',
+3:'Preservar a qualidade, a identificação e as condições de conservação dos insumos já liberados.',
+4:'Impedir o uso de materiais ainda não avaliados ou aprovados.',
+5:'Assegurar que somente matérias-primas liberadas e corretamente identificadas sigam para a produção.',
+6:'Garantir quantidades corretas e rastreáveis, reduzindo erros na formulação.',
+7:'Produzir cápsulas e outras formas sólidas com uniformidade e seguindo o procedimento definido.',
+8:'Obter preparações homogêneas e adequadas à forma farmacêutica prescrita.',
+9:'Reduzir riscos de contaminação e proteger a preparação, o profissional e o ambiente.',
+10:'Manter condições de higiene adequadas e reduzir o risco de contaminação cruzada.',
+11:'Confirmar identificação, documentação e acondicionamento antes da entrega ao cliente.',
+12:'Orientar a movimentação segura de pessoas e materiais, respeitando o fluxo das áreas técnicas.',
+13:'Realizar o preparo específico com identificação e rastreabilidade conforme os procedimentos aplicáveis.',
+14:'Disponibilizar embalagens compatíveis, limpas e corretamente identificadas para o produto.',
+15:'Conferir integridade, identificação e documentação dos materiais antes de encaminhá-los à quarentena.'
+};
+let arrivalAcknowledged=false;
+function closeArrival(){
+ $('arrivalModal').classList.remove('show');$('arrivalPanel').hidden=true;
+ arrivalAcknowledged=true;$('reopenArrival').hidden=false;updateStepUI();
+}
+function showArrival(roomId){
+ if(!playing||movingToStep||completionShown)return;
+ const route=activeRoute();if(!route)return;
+ arrivalAcknowledged=false;
+ const stage=`Etapa ${currentStep+1} de ${route.stops.length} · ${route.name}`;
+ const title=ROOMS[roomId].name;
+ const task=STEP_TEXT[roomId]||'Realizar a atividade prevista para este ambiente.';
+ const why=STEP_WHY[roomId]||'Contribuir para a segurança, qualidade e rastreabilidade do processo.';
+ $('arrivalStage').textContent=$('panelStage').textContent=stage;
+ $('arrivalTitle').textContent=$('panelTitle').textContent=title;
+ $('arrivalTask').textContent=$('panelTask').textContent=task;
+ $('arrivalWhy').textContent=$('panelWhy').textContent=why;
+ // Painel ancorado na cena: continua visível mesmo se o navegador bloquear modais.
+ $('arrivalPanel').hidden=false;
+ $('arrivalModal').classList.remove('show');
+ $('reopenArrival').hidden=true;
+ updateStepUI();
+}
+const ROOM_CONTENTS={
+0:[['Balcão de atendimento','Recepção do cliente e da prescrição.'],['Computador de atendimento','Registro do pedido, consulta e rastreabilidade.'],['Impressora de pedidos','Impressão de documentos e etiquetas.'],['Leitor de código de barras','Identificação e conferência de itens.'],['Terminal de pagamento','Recebimento e registro financeiro.'],['Organizador de receitas','Organização das prescrições durante o atendimento.']],
+1:[['Mesa de avaliação','Apoio à avaliação farmacêutica da prescrição.'],['Computador','Consulta ao sistema e registro das informações.'],['Arquivo de referências','Apoio documental e consulta técnica.'],['Cadeira de atendimento','Atendimento individual com privacidade.']],
+2:[['Balança analítica','Pesagens de alta resolução para análises.'],['pHmetro','Medição de pH conforme método aplicável.'],['Microscópio','Observação de características microscópicas.'],['Vidraria volumétrica','Medição de volumes.'],['Bancada de análises','Execução de ensaios de controle.'],['Termômetro calibrado','Monitoramento de temperatura.']],
+3:[['Estantes de matérias-primas','Armazenamento organizado de insumos.'],['Termo-higrômetro','Monitoramento de temperatura e umidade.'],['Refrigerador controlado','Armazenamento de itens que exigem refrigeração.'],['Armário de segregação','Separação de itens com requisitos específicos.'],['Frascos e potes identificados','Acondicionamento rastreável dos insumos.']],
+4:[['Estantes de quarentena','Materiais aguardando avaliação e liberação.'],['Etiquetas de status','Identificação clara de material não liberado.'],['Área segregada','Previne utilização indevida antes da aprovação.']],
+5:[['Estantes de insumos aprovados','Matérias-primas liberadas para utilização.'],['Potes identificados','Organização por nome, lote e validade.'],['Carrinho de separação','Transporte interno dos insumos selecionados.'],['Etiquetas de rastreabilidade','Identificação do material separado.']],
+6:[['Cabine de pesagem','Área controlada para pesagem e fracionamento.'],['Balança de precisão','Pesagem conforme faixa e resolução adequadas.'],['Espátulas inox','Manipulação e transferência de pós.'],['Papel de pesagem','Apoio à pesagem dos insumos.'],['Etiquetadora','Identificação e rastreabilidade.'],['Recipiente de resíduos','Descarte conforme procedimento.']],
+7:[['Balança de precisão','Pesagem de componentes da formulação.'],['Encapsuladora','Auxílio ao enchimento de cápsulas.'],['Tamis','Padronização granulométrica dos pós.'],['Gral e pistilo','Trituração e homogeneização.'],['Bancada de manipulação','Superfície técnica de trabalho.'],['Potes e cápsulas vazias','Acondicionamento durante a produção.']],
+8:[['Bancada de manipulação','Preparo de cremes, géis, soluções e suspensões.'],['Balança de precisão','Pesagem dos componentes.'],['Misturador de bancada','Homogeneização das preparações.'],['Pipeta graduada','Medição e transferência de líquidos.'],['Espátulas de silicone','Manipulação de semissólidos.'],['Bisnagas e frascos','Acondicionamento das preparações.']],
+9:[['Lavatório de mãos','Higienização antes do acesso às áreas produtivas.'],['Dispenser de sabonete','Apoio à higiene das mãos.'],['Armário de EPIs','Armazenamento de equipamentos de proteção.'],['Banco de troca','Apoio à troca de calçados e vestimentas.'],['Toucas e propés','Itens de paramentação.'],['Lixeira com pedal','Descarte sem contato manual.']],
+10:[['Tanque de lavagem','Higienização de materiais permitidos no setor.'],['Armário de saneantes','Armazenamento segregado de produtos de limpeza.'],['Carrinho de limpeza','Transporte dos utensílios de higienização.'],['Mop e baldes identificados','Execução controlada da limpeza.']],
+11:[['Bancada de conferência','Conferência final antes da liberação.'],['Computador','Registro e verificação do pedido.'],['Impressora de etiquetas','Emissão de identificação final.'],['Prateleira de pedidos','Organização dos produtos concluídos.'],['Materiais de embalagem','Proteção e acondicionamento para entrega.']],
+12:[['Quadro de fluxo','Orientação da circulação de pessoas e materiais.'],['Sinalização de setores','Identificação dos acessos e barreiras.'],['Extintor de incêndio','Item de segurança da circulação.'],['Luminária de emergência','Apoio à evacuação em contingências.']],
+13:[['Bancada de manipulação','Área de preparo das formulações homeopáticas.'],['Frascos conta-gotas','Acondicionamento de preparações líquidas.'],['Almofariz e pistilo','Apoio a processos específicos.'],['Balança de precisão','Pesagens quando aplicáveis.'],['Frascos âmbar','Proteção de preparações sensíveis à luz.']],
+14:[['Estantes de embalagens','Organização de frascos, potes e bisnagas.'],['Frascos e potes','Acondicionamento conforme forma farmacêutica.'],['Bisnagas','Embalagem para semissólidos.'],['Tampas e acessórios','Complementos de fechamento e dispensação.'],['Etiquetas','Identificação final e rastreabilidade.']],
+15:[['Bancada de conferência','Inspeção documental e física do recebimento.'],['Caixas de matéria-prima','Volumes recebidos de fornecedores.'],['Leitor de código de barras','Identificação e rastreabilidade.'],['Carrinho de recebimento','Movimentação interna dos volumes.'],['Pasta de laudos','Conferência da documentação do fornecedor.']]
+};
+let scene,camera,renderer,controls,clock,raycaster,mouse;
+let roomMeshes=[],labels=[],routeGroups=new Map(),stepMarkers=new Map(),interactive=[],contentPanels=[],roomVisuals=[];
+let pharmacist,bodyParts={},activeRouteIndex=2,currentStep=0,routeProgress=0,playing=false,speed=.35,cameraMode='overview',labelsVisible=true;
+let currentPathData=null,currentPoints=[],currentStepProgresses=[],lastRoom=-1,completionShown=false,movingToStep=false,targetStep=0,segmentStart=0,segmentTarget=0,stepCompleted=[];
+let pointerDownPos=null;
+let animationFrameId=null;
+let webglContextLost=false;
+let lastViewportWidth=0,lastViewportHeight=0,lastPixelRatio=0;
+const mobileHardware=matchMedia('(pointer:coarse)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+const limitedHardware=mobileHardware && (navigator.deviceMemory && navigator.deviceMemory<=4 || navigator.hardwareConcurrency && navigator.hardwareConcurrency<=4);
+const ROOM_PALETTE={atendimento:0xc47d58,controle:0x78aabd,estoque:0xa99e60,pesagem:0xc8941f,laboratorio:0x7eaa7a,apoio:0xa28bcf,expedicao:0xbc738c,circulacao:0x789bc5,recebimento:0xb78224};
+const ROOM_ACCENT={atendimento:0x77351d,controle:0x124e66,estoque:0x514923,pesagem:0x754904,laboratorio:0x285b37,apoio:0x433274,expedicao:0x6f273f,circulacao:0x234773,recebimento:0x694205};
+const ROOM_WALLS={atendimento:0xdbad91,controle:0xa9cbd8,estoque:0xc6bd8c,pesagem:0xdcc167,laboratorio:0xaecbad,apoio:0xc6b9e3,expedicao:0xd4a6b4,circulacao:0xaec1d9,recebimento:0xd3b66f};
+const selectedRoutes=new Set(['solidos']);
+
+function fail(message){console.error(message);const box=$('errorBox');if(box){const p=box.querySelector('p');if(p&&message)p.textContent=message;box.classList.add('show');}}
+function init(){
+ if(!window.THREE){fail('Three.js não carregou.');return;}
+ try{
+  scene=new THREE.Scene(); scene.background=new THREE.Color(0x8b9ca6); scene.fog=new THREE.Fog(0x8b9ca6,75,130);
+  camera=new THREE.PerspectiveCamera(58,1,.05,150); camera.position.set(13.5,49,68);
+  renderer=new THREE.WebGLRenderer({antialias:!limitedHardware,alpha:false,powerPreference:'high-performance',preserveDrawingBuffer:false}); renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,limitedHardware?1.35:mobileHardware?1.8:2)); renderer.shadowMap.enabled=true; renderer.shadowMap.type=limitedHardware?THREE.PCFShadowMap:THREE.PCFSoftShadowMap; if('outputEncoding' in renderer)renderer.outputEncoding=THREE.sRGBEncoding; renderer.setClearColor(0x8b9ca6,1); renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.05;
+  $('scene').appendChild(renderer.domElement);
+  controls=new THREE.OrbitControls(camera,renderer.domElement); controls.enableDamping=true; controls.dampingFactor=.07; controls.target.set(13.5,0,20); controls.minDistance=8; controls.maxDistance=110; controls.maxPolarAngle=Math.PI*.48;
+  clock=new THREE.Clock(); raycaster=new THREE.Raycaster(); mouse=new THREE.Vector2();
+  createLights(); createPharmacy(); createRoutes(); createPharmacist(); buildUI(); setActiveRoute(2,false); resize(); setCameraMode('overview');
+  window.addEventListener('resize',resize);if(window.ResizeObserver){new ResizeObserver(resize).observe($('scene'));}window.addEventListener('orientationchange',()=>{setTimeout(resize,100);setTimeout(resize,450);});if(window.visualViewport)window.visualViewport.addEventListener('resize',resize); document.addEventListener('fullscreenchange',()=>{const on=!!document.fullscreenElement;$('fullscreenBtn').setAttribute('aria-pressed',String(on));$('fullscreenBtn').innerHTML=on?'⤢ <span class="text">Sair da tela cheia</span>':'⛶ <span class="text">Tela cheia</span>';setTimeout(resize,60);}); renderer.domElement.addEventListener('pointerdown',e=>{pointerDownPos={x:e.clientX,y:e.clientY};}); renderer.domElement.addEventListener('pointercancel',()=>{pointerDownPos=null;}); renderer.domElement.addEventListener('pointerup',e=>{if(!pointerDownPos)return;const moved=Math.hypot(e.clientX-pointerDownPos.x,e.clientY-pointerDownPos.y);pointerDownPos=null;if(moved<6)onPick(e);}); renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();webglContextLost=true;if(animationFrameId)cancelAnimationFrame(animationFrameId);fail('O contexto gráfico foi interrompido. Recarregue a página para reiniciar o simulador.');}); animate();
+ }catch(err){fail(err);}
+}
+function createLights(){
+ scene.add(new THREE.HemisphereLight(0xf5f8fa,0x4f5d64,.92));
+ const key=new THREE.DirectionalLight(0xfff0dc,1.28); key.position.set(16,28,18); key.castShadow=true; key.shadow.mapSize.set(limitedHardware?1024:2048,limitedHardware?1024:2048); key.shadow.camera.left=-34; key.shadow.camera.right=34; key.shadow.camera.top=34; key.shadow.camera.bottom=-34; key.shadow.radius=3.2; key.shadow.bias=-0.0002; scene.add(key);
+ const fill=new THREE.DirectionalLight(0xcfe3ee,.48); fill.position.set(-18,14,-10); scene.add(fill);
+ const rim=new THREE.DirectionalLight(0xffffff,.24); rim.position.set(28,14,28); scene.add(rim);
+ const bounce=new THREE.PointLight(0xe7eef2,.72,62,2); bounce.position.set(13,8,16); scene.add(bounce);
+}
+const textureCache=new Map();
+function createPatternTexture(kind,base,line,accent='#ffffff'){
+ const key=[kind,base,line,accent].join('|');
+ if(textureCache.has(key)) return textureCache.get(key).clone();
+ const c=document.createElement('canvas'),ctx=c.getContext('2d');
+ c.width=c.height=256;
+ ctx.fillStyle=base;ctx.fillRect(0,0,256,256);
+ const noise=(count,alphaMin=.03,alphaMax=.1,sizeMin=1,sizeMax=3,palette=[accent,line])=>{
+   for(let i=0;i<count;i++){
+     ctx.fillStyle=palette[i%palette.length];
+     ctx.globalAlpha=alphaMin+Math.random()*(alphaMax-alphaMin);
+     const s=sizeMin+Math.random()*(sizeMax-sizeMin);
+     ctx.fillRect(Math.random()*256,Math.random()*256,s,s);
+   }
+   ctx.globalAlpha=1;
+ };
+ if(kind==='tile'){
+   ctx.strokeStyle=line;ctx.lineWidth=3;
+   for(let x=0;x<=256;x+=32){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,256);ctx.stroke();}
+   for(let y=0;y<=256;y+=32){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(256,y);ctx.stroke();}
+   ctx.strokeStyle=accent;ctx.lineWidth=1;
+   for(let x=16;x<=256;x+=32){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,256);ctx.stroke();}
+   noise(700,.015,.06,.8,2.2,[accent,'#ffffff']);
+ } else if(kind==='planks'){
+   const g=ctx.createLinearGradient(0,0,256,0);g.addColorStop(0,base);g.addColorStop(.5,accent);g.addColorStop(1,base);ctx.fillStyle=g;ctx.fillRect(0,0,256,256);
+   ctx.strokeStyle=line; ctx.lineWidth=4;
+   for(let y=0;y<=256;y+=36){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(256,y);ctx.stroke();}
+   ctx.strokeStyle=accent;ctx.lineWidth=2;
+   for(let x=0;x<=256;x+=52){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,256);ctx.stroke();}
+   for(let y=10;y<256;y+=18){ctx.strokeStyle='rgba(255,255,255,.06)';ctx.beginPath();ctx.moveTo(0,y);ctx.bezierCurveTo(60,y+4,180,y-4,256,y);ctx.stroke();}
+   noise(500,.018,.05,.8,2,[line,accent]);
+ } else if(kind==='grid'){
+   const g=ctx.createLinearGradient(0,0,0,256);g.addColorStop(0,accent);g.addColorStop(1,base);ctx.fillStyle=g;ctx.fillRect(0,0,256,256);
+   ctx.strokeStyle=line; ctx.lineWidth=2;
+   for(let x=0;x<=256;x+=22){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,256);ctx.stroke();}
+   for(let y=0;y<=256;y+=22){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(256,y);ctx.stroke();}
+   noise(650,.015,.05,.8,1.8,[accent,'#ffffff']);
+ } else if(kind==='speckle'){
+   const g=ctx.createLinearGradient(0,0,256,256);g.addColorStop(0,base);g.addColorStop(1,accent);ctx.fillStyle=g;ctx.fillRect(0,0,256,256);
+   noise(1200,.04,.16,.8,3.2,[line,accent,'#ffffff']);
+ } else if(kind==='epoxy'){
+   const g=ctx.createLinearGradient(0,0,256,256);g.addColorStop(0,accent);g.addColorStop(.5,base);g.addColorStop(1,accent);ctx.fillStyle=g;ctx.fillRect(0,0,256,256);
+   for(let i=0;i<8;i++){ctx.strokeStyle='rgba(255,255,255,.08)';ctx.lineWidth=8;ctx.beginPath();ctx.moveTo(-20,30+i*34);ctx.lineTo(276,12+i*34);ctx.stroke();}
+   noise(900,.02,.06,.8,2.2,[accent,'#ffffff']);
+ } else if(kind==='terrazzo'){
+   const g=ctx.createLinearGradient(0,0,0,256);g.addColorStop(0,base);g.addColorStop(1,accent);ctx.fillStyle=g;ctx.fillRect(0,0,256,256);
+   for(let i=0;i<1000;i++){
+     const colors=[line,accent,'#ffffff','#cfd8dc'];
+     ctx.fillStyle=colors[Math.floor(Math.random()*colors.length)];
+     ctx.globalAlpha=.12+Math.random()*.16;
+     const x=Math.random()*256,y=Math.random()*256,s=1+Math.random()*4;
+     ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+s,y+1);ctx.lineTo(x+1,y+s);ctx.closePath();ctx.fill();
+   }
+   ctx.globalAlpha=1;
+ } else if(kind==='wall'){
+   ctx.fillStyle=base;ctx.fillRect(0,0,256,256);
+   const g=ctx.createLinearGradient(0,0,0,256);
+   g.addColorStop(0,'rgba(255,255,255,.18)');
+   g.addColorStop(.45,'rgba(255,255,255,.04)');
+   g.addColorStop(.7,'rgba(255,255,255,0)');
+   g.addColorStop(1,'rgba(30,40,46,.09)');
+   ctx.fillStyle=g;ctx.fillRect(0,0,256,256);
+   ctx.fillStyle='rgba(255,255,255,.09)';ctx.fillRect(0,150,256,42);
+   ctx.strokeStyle=line;ctx.globalAlpha=.18;
+   for(let y=18;y<256;y+=24){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(256,y);ctx.stroke();}
+   ctx.globalAlpha=1;
+   noise(350,.02,.05,.8,2.2,[accent,'#ffffff']);
+ }
+ const tex=new THREE.CanvasTexture(c);tex.wrapS=tex.wrapT=THREE.RepeatWrapping;tex.anisotropy=8;textureCache.set(key,tex);return tex.clone();
+}
+ function roomFloorMaterial(type,w,d){
+  const t=createPatternTexture('tile','#20252a','#111519','#333b42');
+  t.repeat.set(Math.max(2,w/1.15),Math.max(2,d/1.15));
+  return new THREE.MeshStandardMaterial({map:t,color:0xffffff,roughness:.48,metalness:.12});
+ }
+function roomWallMaterial(accentColor,type){
+ const accent='#'+accentColor.toString(16).padStart(6,'0');
+ const wallBase='#'+(ROOM_WALLS[type]||0xe7edf0).toString(16).padStart(6,'0');
+ const t=createPatternTexture('wall',wallBase,'#9eacb4',accent);t.repeat.set(2.5,1.7);
+ return new THREE.MeshStandardMaterial({map:t,roughness:.8,metalness:.01,color:0xffffff});
+}
+function metalMaterial(){return new THREE.MeshStandardMaterial({color:0x90a3ad,roughness:.42,metalness:.62});}
+function glassMaterial(opacity=.34){return new THREE.MeshStandardMaterial({color:0xc9e8f3,roughness:.08,metalness:.08,transparent:true,opacity});}
+function plasticMaterial(color){return new THREE.MeshStandardMaterial({color,roughness:.58,metalness:.06});}
+function addWindowPanel(x,y,z,w,h,rotY=0){const frame=box(w+.08,.08,.04,0x6b8fa3,x,y+h/2+.02,z,false); frame.rotation.y=rotY; const glass=new THREE.Mesh(new THREE.BoxGeometry(w,h,.025),glassMaterial(.28)); glass.position.set(x,y,z); glass.rotation.y=rotY; glass.castShadow=false; glass.receiveShadow=false; scene.add(glass); const sill=box(w+.1,.05,.18,0x7898a8,x,y-h/2+.05,z,false); sill.rotation.y=rotY; return glass;}
+function addRoomWindows(r){const cx=r.x+r.w/2,cz=r.z+r.d/2; if(r.z===4){addWindowPanel(cx,1.18,r.z+.09,Math.max(1.2,r.w*.42),.62,0);} if(r.x===0){addWindowPanel(r.x+.09,1.18,cz,Math.max(1.2,r.d*.34),.62,Math.PI/2);} if(r.x+r.w===26){addWindowPanel(r.x+r.w-.09,1.18,cz,Math.max(1.2,r.d*.34),.62,Math.PI/2);} if(r.z+r.d===36){addWindowPanel(cx,1.18,r.z+r.d-.09,Math.max(1.2,r.w*.35),.62,0);} }
+function mat(c,rough=.86){return new THREE.MeshStandardMaterial({color:c,roughness:rough,metalness:.03});}
+function transparentMat(c,opacity=.72,rough=.9){return new THREE.MeshStandardMaterial({color:c,roughness:rough,metalness:.02,transparent:true,opacity});}
+function box(w,h,d,color,x,y,z,shadow=true){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(color));m.position.set(x,y,z);m.castShadow=shadow;m.receiveShadow=true;scene.add(m);return m;}
+function boxMaterial(w,h,d,material,x,y,z,shadow=true){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);m.position.set(x,y,z);m.castShadow=shadow;m.receiveShadow=true;scene.add(m);return m;}
+function wallBox(w,h,d,color,x,y,z,opacity=.82){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),transparentMat(color,opacity));m.position.set(x,y,z);m.castShadow=false;m.receiveShadow=true;scene.add(m);return m;}
+function glowMat(color,emissive=color,intensity=.22){return new THREE.MeshStandardMaterial({color,emissive,emissiveIntensity:intensity,roughness:.62,metalness:.02});}
+function lightPanel(w,d,x,y,z){const p=new THREE.Mesh(new THREE.BoxGeometry(w,.06,d),glowMat(0xf9faf8,0xffffff,.6));p.position.set(x,y,z);scene.add(p);return p;}
+function addArchitecturalDetails(r,accent){
+ const cx=r.x+r.w/2,cz=r.z+r.d/2;
+ // rodapés e frisos arquitetônicos
+ box(r.w-.28,.12,.06,0x3f4b52,cx,.14,r.z+r.d-.15,false);
+ box(.06,.12,r.d-.28,0x3f4b52,r.x+.15,.14,cz,false);
+ box(.06,.12,r.d-.28,0x3f4b52,r.x+r.w-.15,.14,cz,false);
+ const band=box(r.w-.55,.23,.038,accent,cx,1.44,r.z+r.d-.145,false);band.material.roughness=.46;band.material.metalness=.08;
+ const lower=box(r.w-.5,.46,.03,accent,cx,.52,r.z+r.d-.138,false);lower.material.opacity=.22;lower.material.transparent=true;
+ const sideAccent=box(.035,.72,r.d*.52,accent,r.x+.135,.76,cz,false);sideAccent.material.opacity=.3;sideAccent.material.transparent=true;
+ // luminárias e luz ambiente por cômodo
+ const lampMat=new THREE.MeshStandardMaterial({color:0xf9fbfc,emissive:0xffffff,emissiveIntensity:1.25,roughness:.25,metalness:.14});
+ const count=Math.max(1,Math.floor(r.w/3.1));
+ for(let k=0;k<count;k++){
+   const lx=r.x+(k+1)*r.w/(count+1);
+   const lamp=new THREE.Mesh(new THREE.BoxGeometry(Math.min(1.45,r.w*.22),.055,.38),lampMat);lamp.position.set(lx,2.03,cz);scene.add(lamp);
+ }
+ const roomLight=new THREE.PointLight(0xffefdb,.42,Math.max(6,r.w+r.d),2);roomLight.position.set(cx,1.8,cz);scene.add(roomLight);
+ // elementos de segurança/identidade
+ const safety=box(.2,.44,.04,0x2f7d57,r.x+r.w-.38,.64,r.z+.14,false);safety.material.emissive=new THREE.Color(0x16492f);safety.material.emissiveIntensity=.1;
+ const plaque=box(Math.min(1.8,r.w*.42),.16,.04,accent,cx,1.75,r.z+r.d-.145,false);plaque.material.emissive=new THREE.Color(accent);plaque.material.emissiveIntensity=.08;
+}
+
+// V54: mobiliário suspenso e acessórios específicos por setor.
+// Objetos acima de 1,6 m não interferem no algoritmo de navegação A*.
+const ROOM_REALISM_ITEMS=[
+ ['Expositor de dermocosméticos','Painel de informações ao paciente','Armário de medicamentos dispensados'],
+ ['Biblioteca de referências farmacêuticas','Quadro de orientações clínicas','Armário de prontuários'],
+ ['Armário de vidrarias','Quadro de calibração e controles','Prateleira de reagentes identificados'],
+ ['Prateleira de lotes rastreados','Painel de temperatura e umidade','Armário de EPIs de estoque'],
+ ['Sinalização de materiais em quarentena','Quadro de segregação de lotes','Armário de registros de recebimento'],
+ ['Sinalização de insumos liberados','Prateleira de matérias-primas aprovadas','Quadro de rastreabilidade'],
+ ['Armário de utensílios de pesagem','Quadro de conferência de pesagens','Suporte de recipientes identificados'],
+ ['Prateleira de cápsulas e excipientes','Painel de procedimentos de encapsulação','Armário de tamises e utensílios'],
+ ['Prateleira de frascos e bisnagas','Painel de procedimentos de homogeneização','Armário de vidrarias e espátulas'],
+ ['Armário de toucas e máscaras','Quadro de sequência de paramentação','Dispenser de aventais'],
+ ['Armário de saneantes identificados','Quadro de procedimentos de higienização','Suporte de acessórios de limpeza'],
+ ['Armário de materiais de embalagem','Painel de conferência final','Prateleira de pedidos separados'],
+ ['Quadro de fluxos internos','Sinalização de acesso restrito','Painel de segurança e emergência'],
+ ['Armário de frascos âmbar','Prateleira de insumos homeopáticos','Quadro de procedimentos técnicos'],
+ ['Prateleira de bisnagas e potes','Organizador de tampas e válvulas','Painel de identificação de embalagens'],
+ ['Prateleira de documentos de fornecedores','Painel de conferência de recebimento','Armário de amostras e laudos']
+];
+function addRoomRealism(){
+ const graphite=new THREE.MeshStandardMaterial({color:0x485a63,roughness:.42,metalness:.32});
+ const inox=new THREE.MeshStandardMaterial({color:0xaabcc2,roughness:.27,metalness:.66});
+ const pale=new THREE.MeshStandardMaterial({color:0xdfe8e9,roughness:.7});
+ const amber=new THREE.MeshStandardMaterial({color:0x966947,roughness:.4});
+ const red=new THREE.MeshStandardMaterial({color:0xd71920,roughness:.42});
+ const cyan=new THREE.MeshStandardMaterial({color:0x80c1d0,roughness:.34});
+ function part(g,w,h,d,x,y,z,mat){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;g.add(m);return m;}
+ ROOMS.forEach((r,i)=>{
+  const names=ROOM_REALISM_ITEMS[i];
+  // Estações suspensas na parede do fundo: corredor e portas permanecem desobstruídos.
+  const usable=Math.min(r.w-1.25,5.6),gap=usable/3;
+  names.forEach((name,j)=>{
+   const group=new THREE.Group();
+   const ww=Math.min(1.32,gap*.82),depth=.24;
+   const xx=r.x+r.w/2+(j-1)*gap;
+   const zz=r.z+r.d-.30;
+   // Estrutura de armário / painel em altura segura para circulação.
+   part(group,ww,.55,depth,0,1.84,0,j===1?pale:graphite);
+   part(group,ww+.04,.045,depth+.05,0,1.55,0,inox);
+   part(group,.035,.36,.02,-ww*.35,1.85,-depth/2-.015,red);
+   if(j===1){
+    for(let k=0;k<3;k++)part(group,ww*.66,.025,.008,0,1.96-k*.105,-depth/2-.016,graphite);
+   }else{
+    for(let k=0;k<4;k++){
+     const mat=k%3===0?amber:k%3===1?cyan:pale;
+     const x=(k-1.5)*ww*.19;
+     const bottle=new THREE.Mesh(new THREE.CylinderGeometry(.055,.065,.20,10),mat);
+     bottle.position.set(x,1.71,-depth/2-.065);bottle.castShadow=true;group.add(bottle);
+     part(group,.085,.025,.085,x,1.82,-depth/2-.065,graphite);
+    }
+   }
+   group.position.set(xx,0,zz);
+   group.userData={kind:'equipment',name,info:name+' — recurso de apoio do setor '+r.name+'. Auxilia na organização dos materiais, na identificação e na rastreabilidade das atividades.'};
+   scene.add(group);interactive.push(group);
+  });
+  // Luminária técnica sobre a bancada, sem colisão com o avatar.
+  if([2,6,7,8,13].includes(i)){
+   const g=new THREE.Group();
+   part(g,1.45,.045,.23,0,2.0,0,inox);
+   part(g,1.20,.012,.15,0,1.968,0,new THREE.MeshStandardMaterial({color:0xe7f5f7,emissive:0xb7e5f3,emissiveIntensity:.55}));
+   g.position.set(r.x+r.w/2,0,r.z+r.d-.42);
+   g.userData={kind:'equipment',name:'Luminária técnica de bancada',info:'Iluminação complementar para inspeção visual e execução das atividades de '+r.name+'.'};
+   scene.add(g);interactive.push(g);
+  }
+ });
+}
+
+function createPharmacy(){
+ const baseMat=roomFloorMaterial('circulacao',30,36); const floor=boxMaterial(33,.28,38,baseMat,12.6,-.15,19.4,false); floor.receiveShadow=true;
+ // outer apron
+ box(30,.08,2.2,0xa7bcc6,13,-.06,2.5,false); box(2,.08,37,0xa7bcc6,-1,-.06,20,false);
+ box(6,.03,1.4,0x7ca8bb,4,.02,3.2,false);
+ box(4,.04,.7,0x345f73,13,.02,2.1,false);
+ ROOMS.forEach((r,i)=>createRoom(r,i));
+ createCorridors();
+ addSpecializedEquipment();
+ addRoomRealism();
+ createSign('ENTRADA PRINCIPAL',4,1.85,3.8,0xd71920,3.6,.58);
+ createSign('FARMÁCIA TECH LEARNING',13,3.05,2.8,0xd71920,6.2,.78);
+}
+function createCorridors(){
+ // Planta existente preservada: quatro alas com portas para corredores
+ // horizontais e dois corredores laterais de interligação (sem cruzar salas).
+ const matFloor=roomFloorMaterial('circulacao',33,38);
+ const zs=[0,4,8,12].map(i=>corridorZ(i));
+ const left=CORRIDOR_LEFT_X,right=CORRIDOR_RIGHT_X;
+ zs.forEach((z,i)=>{
+  const width=right-left+2.55,center=(left+right)/2;
+  const floor=boxMaterial(width,.095,2.65,matFloor,center,.045,z,false);
+  floor.receiveShadow=true;
+  box(width-.12,.045,.08,0x527483,center,.12,z-1.30,false);
+  box(width-.12,.045,.08,0x527483,center,.12,z+1.30,false);
+  createSign('CORREDOR DE CIRCULAÇÃO '+(i+1),13,2.6,z,0xd71920,5.4,.55);
+ });
+ const z1=zs[0],z2=zs[zs.length-1];
+ [left,right].forEach((x,i)=>{
+  const spine=boxMaterial(2.55,.10,z2-z1+2.65,matFloor,x,.045,(z1+z2)/2,false);
+  spine.receiveShadow=true;
+  const edge=i===0?x-1.25:x+1.25;
+  box(.08,.045,z2-z1+2.6,0x527483,edge,.12,(z1+z2)/2,false);
+ });
+ // Pisos contínuos com indicação visual dos acessos (sem barreiras).
+ ROOMS.forEach((r,id)=>{
+  const p=hallEntry(id);
+  box(Math.min(1.6,r.w*.35),.014,.34,0x7ca8bb,p.x,.126,r.z-.18,false);
+ });
+}
+
+function createRoom(r,i){
+ const roomStart=scene.children.length;
+ const cx=r.x+r.w/2,cz=r.z+r.d/2;
+ const floorColor=ROOM_PALETTE[r.type]||0xe7eef2;
+ const accent=ROOM_ACCENT[r.type]||0x7296aa;
+ const floorMat=roomFloorMaterial(r.type,r.w,r.d);
+ boxMaterial(r.w-.15,.12,r.d-.15,floorMat,cx,.02,cz,false);
+ 
+ 
+ box(r.w,.07,.20,0x344c58,cx,.085,r.z+.08,false); box(r.w,.07,.20,0x344c58,cx,.085,r.z+r.d-.08,false); box(.20,.07,r.d,0x344c58,r.x+.08,.085,cz,false); box(.20,.07,r.d,0x344c58,r.x+r.w-.08,.085,cz,false);
+ const wallH=2.08,t=.13,wallMat=roomWallMaterial(accent,r.type);
+ // Portas de passagem reais em paredes compartilhadas, sem barreiras invisíveis.
+ // Cada parede tem abertura central de 1,65 m; o trajeto cruza apenas essas aberturas.
+ const doorW=Math.min(1.7,r.w*.36),side=(r.w-doorW)/2;
+ const wallSegment=(horizontal,start,length,fixed)=>{
+  if(length<=.04)return;
+  if(horizontal)boxMaterial(length,wallH,t,wallMat,start+length/2,wallH/2,fixed,false);
+  else boxMaterial(t,wallH,length,wallMat,fixed,wallH/2,start+length/2,false);
+ };
+ // Frentes e fundos: abertura central; laterais: abertura central.
+ wallSegment(true,r.x,side,r.z+.05);wallSegment(true,r.x+side+doorW,side,r.z+.05);
+ wallSegment(true,r.x,r.w,r.z+r.d-.05);
+ const sideDoor=Math.min(1.65,r.d*.34),sidePart=(r.d-sideDoor)/2;
+ for(const [xx,sideName] of [[r.x+.05,'left'],[r.x+r.w-.05,'right']]){
+  const adjacent=ROOMS.some((other,j)=>j!==i &&
+    (sideName==='right'?Math.abs(r.x+r.w-other.x)<.001:Math.abs(other.x+other.w-r.x)<.001) &&
+    Math.min(r.z+r.d,other.z+other.d)-Math.max(r.z,other.z)>1.8);
+  if(adjacent){
+   const openingZ=r.z+r.d/2;
+   wallSegment(false,r.z,openingZ-sideDoor/2-r.z,xx);
+   wallSegment(false,openingZ+sideDoor/2,r.z+r.d-(openingZ+sideDoor/2),xx);
+   for(const zz of [openingZ-sideDoor/2,openingZ+sideDoor/2])box(.085,1.78,.085,0x557e92,xx,.89,zz,false);
+   box(.10,.12,sideDoor+.12,0x557e92,xx,1.76,openingZ,false);
+   box(.27,.025,sideDoor+.06,0x6f8b98,xx,.04,openingZ,false);
+  }else wallSegment(false,r.z,r.d,xx);
+ }
+ // Batentes e vergas nos quatro acessos; folha aberta sem bloquear o vão.
+ const frameMat=transparentMat(0x557e92,.96,.5);
+ for(const xx of [cx-doorW/2,cx+doorW/2])box(.075,1.72,.075,0x557e92,xx,.86,r.z+.05,false);
+ box(doorW+.12,.12,.09,0x557e92,cx,1.69,r.z+.05,false);
+
+ const threshold=box(doorW+.1,.02,.32,0x6f8b98,cx,.03,r.z+.19,false);threshold.material.roughness=.55;
+ box(r.w-.3,.07,.06,0x60879b,cx,.12,r.z+r.d-.11,false); box(r.w-.3,.07,.06,0x60879b,cx,.12,r.z+.11,false); box(.06,.07,r.d-.3,0x60879b,r.x+.11,.12,cz,false); box(.06,.07,r.d-.3,0x60879b,r.x+r.w-.11,.12,cz,false);
+ 
+ 
+ box(.08,1.84,.08,0x8caab7,r.x+.08,.92,r.z+.08,false); box(.08,1.84,.08,0x8caab7,r.x+r.w-.08,.92,r.z+.08,false); box(.08,1.84,.08,0x8caab7,r.x+.08,.92,r.z+r.d-.08,false); box(.08,1.84,.08,0x8caab7,r.x+r.w-.08,.92,r.z+r.d-.08,false);
+ addRoomWindows(r); addArchitecturalDetails(r,accent);
+ createFurniture(r,i); createRoomLabel(r,i); createRoomContentPanel(r,i);
+ const clickable=new THREE.Mesh(new THREE.BoxGeometry(r.w,.25,r.d),new THREE.MeshBasicMaterial({transparent:true,opacity:0}));clickable.position.set(cx,.25,cz);clickable.userData={kind:'room',name:r.name,info:(ROOM_CONTENTS[i]||[]).map(x=>x[0]).join(' • ')||'Ambiente operacional da Farmácia Tech Learning.'};scene.add(clickable);interactive.push(clickable);roomMeshes.push(clickable);
+ roomVisuals[i]=scene.children.slice(roomStart).filter(o=>o!==clickable);
+}
+function equipmentColor(name,fallback){
+ const n=(name||'').toLowerCase();
+ if(n.includes('computador')||n.includes('terminal')) return 0x294652;
+ if(n.includes('estante')||n.includes('prateleira')||n.includes('armário')||n.includes('arquivo')) return 0x657a80;
+ if(n.includes('bancada')||n.includes('mesa')||n.includes('balcão')) return 0x76939c;
+ if(n.includes('refrigerador')) return 0xb7c8cd;
+ if(n.includes('cabine')) return 0x5e8491;
+ if(n.includes('carrinho')) return 0x6f9996;
+ if(n.includes('tanque')||n.includes('lavatório')) return 0x9eb5bb;
+ return fallback;
+}
+function addEquipmentDetails(group,name,fw,fd,fh){
+ const n=(name||'').toLowerCase();
+ if(n.includes('computador')){
+   const screen=new THREE.Mesh(new THREE.BoxGeometry(Math.max(.28,fw*.78),Math.max(.18,fh*.35),.035),new THREE.MeshStandardMaterial({color:0x162b34,emissive:0x0d6d86,emissiveIntensity:.35,roughness:.25,metalness:.15}));screen.position.set(0,fh+.28,-fd*.35);group.add(screen);
+   const stand=new THREE.Mesh(new THREE.BoxGeometry(.06,.24,.06),metalMaterial());stand.position.set(0,fh+.13,-fd*.35);group.add(stand);
+ }
+ if(n.includes('estante')||n.includes('prateleira')||n.includes('armário')||n.includes('arquivo')){
+   for(let sy=.3;sy<fh;sy+=.35){const shelf=new THREE.Mesh(new THREE.BoxGeometry(fw*.88,.025,fd*.88),metalMaterial());shelf.position.set(0,sy,0);group.add(shelf);}
+ }
+ if(n.includes('refrigerador')){
+   const handle=new THREE.Mesh(new THREE.BoxGeometry(.035,fh*.46,.035),metalMaterial());handle.position.set(fw*.32,fh*.58,-fd*.51);group.add(handle);
+ }
+ if(n.includes('bancada')||n.includes('mesa')||n.includes('balcão')){
+   const fascia=new THREE.Mesh(new THREE.BoxGeometry(fw*.7,.12,.025),new THREE.MeshStandardMaterial({color:0xd71920,roughness:.45,metalness:.04}));fascia.position.set(0,fh*.72,-fd/2-.02);group.add(fascia);
+   const backsplash=new THREE.Mesh(new THREE.BoxGeometry(fw*.92,.22,.035),new THREE.MeshStandardMaterial({color:0xd9e2e5,roughness:.32,metalness:.18}));backsplash.position.set(0,fh+.16,fd/2-.02);group.add(backsplash);
+ }
+ if(n.includes('cabine')){const hood=new THREE.Mesh(new THREE.BoxGeometry(fw*.92,.5,fd*.9),new THREE.MeshStandardMaterial({color:0xb5c7ce,transparent:true,opacity:.55,roughness:.18,metalness:.08}));hood.position.set(0,fh+.32,0);group.add(hood);}
+}
+function createBottleCluster(fx,fz,count=4,color=0x9c6b46){
+ const group=new THREE.Group();
+ for(let k=0;k<count;k++){const b=new THREE.Mesh(new THREE.CylinderGeometry(.08,.085,.28,16),new THREE.MeshStandardMaterial({color,roughness:.35,metalness:.04}));b.position.set((k%2)*.18-.09,.16,Math.floor(k/2)*.18-.09);b.castShadow=true;group.add(b);const cap=new THREE.Mesh(new THREE.CylinderGeometry(.07,.07,.045,16),new THREE.MeshStandardMaterial({color:0x2f3d45,roughness:.45}));cap.position.set(b.position.x,.325,b.position.z);group.add(cap);}
+ group.position.set(fx,0,fz);scene.add(group);return group;
+}
+function createStainlessSink(fx,fz,w=.8,d=.5){const g=new THREE.Group();const base=new THREE.Mesh(new THREE.BoxGeometry(w,.7,d),new THREE.MeshStandardMaterial({color:0x8fa4ae,roughness:.22,metalness:.68}));base.position.y=.35;base.castShadow=true;g.add(base);const basin=new THREE.Mesh(new THREE.BoxGeometry(w*.66,.12,d*.58),new THREE.MeshStandardMaterial({color:0x677d87,roughness:.2,metalness:.82}));basin.position.set(0,.72,0);g.add(basin);const faucet=new THREE.Mesh(new THREE.TorusGeometry(.16,.025,10,20,Math.PI),metalMaterial());faucet.rotation.z=Math.PI/2;faucet.position.set(0,.95,-.1);g.add(faucet);g.position.set(fx,0,fz);scene.add(g);return g;}
+function createChair(fx,fz,color=0x667d89){const g=new THREE.Group();const seat=new THREE.Mesh(new THREE.BoxGeometry(.38,.08,.38),plasticMaterial(color));seat.position.y=.48;seat.castShadow=true;g.add(seat);const back=new THREE.Mesh(new THREE.BoxGeometry(.38,.48,.08),plasticMaterial(color));back.position.set(0,.72,.16);back.castShadow=true;g.add(back);const stem=new THREE.Mesh(new THREE.CylinderGeometry(.035,.035,.45,10),metalMaterial());stem.position.y=.25;g.add(stem);const foot=new THREE.Mesh(new THREE.CylinderGeometry(.18,.18,.04,20),metalMaterial());foot.position.y=.03;g.add(foot);g.position.set(fx,0,fz);scene.add(g);return g;}
+function createScaleDetail(fx,fz){const g=new THREE.Group();const base=new THREE.Mesh(new THREE.BoxGeometry(.42,.18,.34),new THREE.MeshStandardMaterial({color:0x596d77,roughness:.28,metalness:.35}));base.position.y=.09;g.add(base);const plate=new THREE.Mesh(new THREE.CylinderGeometry(.16,.16,.035,24),metalMaterial());plate.position.y=.21;g.add(plate);const display=new THREE.Mesh(new THREE.BoxGeometry(.16,.08,.035),new THREE.MeshStandardMaterial({color:0x162b34,emissive:0x36c4d4,emissiveIntensity:.35}));display.position.set(.12,.15,-.19);g.add(display);g.position.set(fx,.82,fz);scene.add(g);return g;}
+function registerEquipment(group,name){group.userData={kind:'equipment',name,info:equipmentInfo(name)};scene.add(group);interactive.push(group);return group;}
+function createAnalyticalBalance(fx,fz,name='Balança analítica'){
+ const g=new THREE.Group();
+ const base=new THREE.Mesh(new THREE.BoxGeometry(.52,.16,.42),new THREE.MeshStandardMaterial({color:0x526873,roughness:.28,metalness:.38}));base.position.y=.08;g.add(base);
+ const plate=new THREE.Mesh(new THREE.CylinderGeometry(.14,.14,.025,28),metalMaterial());plate.position.y=.19;g.add(plate);
+ const glass=glassMaterial(.22);[['L',-.19,0,.025,.42,.38],['R',.19,0,.025,.42,.38],['B',0,.16,.38,.42,.025]].forEach(v=>{const p=new THREE.Mesh(new THREE.BoxGeometry(v[3],v[4],v[5]),glass);p.position.set(v[1],.38,v[2]);g.add(p);});
+ const display=new THREE.Mesh(new THREE.BoxGeometry(.18,.08,.035),new THREE.MeshStandardMaterial({color:0x132a32,emissive:0x35c7d8,emissiveIntensity:.45}));display.position.set(.14,.11,-.23);g.add(display);
+ g.position.set(fx,.82,fz);return registerEquipment(g,name);
+}
+function createMicroscope(fx,fz){
+ const g=new THREE.Group();const base=new THREE.Mesh(new THREE.BoxGeometry(.42,.08,.32),new THREE.MeshStandardMaterial({color:0x354c58,roughness:.35,metalness:.18}));base.position.y=.04;g.add(base);
+ const stem=new THREE.Mesh(new THREE.CylinderGeometry(.045,.055,.48,14),metalMaterial());stem.position.set(.06,.31,.04);stem.rotation.z=-.28;g.add(stem);
+ const head=new THREE.Mesh(new THREE.BoxGeometry(.22,.16,.18),new THREE.MeshStandardMaterial({color:0xd6dde0,roughness:.3,metalness:.12}));head.position.set(-.04,.56,-.04);g.add(head);
+ const lens=new THREE.Mesh(new THREE.CylinderGeometry(.045,.045,.18,14),new THREE.MeshStandardMaterial({color:0x24343d,roughness:.24,metalness:.55}));lens.rotation.x=Math.PI/2;lens.position.set(-.05,.48,-.16);g.add(lens);
+ const stage=new THREE.Mesh(new THREE.BoxGeometry(.28,.025,.22),metalMaterial());stage.position.set(0,.28,-.04);g.add(stage);
+ g.position.set(fx,.82,fz);return registerEquipment(g,'Microscópio');
+}
+function createPHMeter(fx,fz){
+ const g=new THREE.Group();const body=new THREE.Mesh(new THREE.BoxGeometry(.28,.2,.24),new THREE.MeshStandardMaterial({color:0x607984,roughness:.32,metalness:.2}));body.position.y=.1;g.add(body);
+ const screen=new THREE.Mesh(new THREE.BoxGeometry(.17,.07,.025),new THREE.MeshStandardMaterial({color:0x14313a,emissive:0x62d4b6,emissiveIntensity:.4}));screen.position.set(0,.13,-.13);g.add(screen);
+ const arm=new THREE.Mesh(new THREE.CylinderGeometry(.018,.018,.46,10),metalMaterial());arm.position.set(.19,.3,0);arm.rotation.z=-.22;g.add(arm);
+ const probe=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.22,10),new THREE.MeshStandardMaterial({color:0xe1edf0,roughness:.32}));probe.position.set(.25,.46,0);g.add(probe);
+ g.position.set(fx,.82,fz);return registerEquipment(g,'pHmetro');
+}
+function createCapsuleMachine(fx,fz){
+ const g=new THREE.Group();const base=new THREE.Mesh(new THREE.BoxGeometry(.7,.12,.48),new THREE.MeshStandardMaterial({color:0x6c8992,roughness:.3,metalness:.28}));base.position.y=.06;g.add(base);
+ const plate=new THREE.Mesh(new THREE.BoxGeometry(.58,.08,.38),new THREE.MeshStandardMaterial({color:0xbecbd0,roughness:.24,metalness:.42}));plate.position.y=.16;g.add(plate);
+ for(let ix=-2;ix<=2;ix++)for(let iz=-1;iz<=1;iz++){const hole=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.035,10),new THREE.MeshStandardMaterial({color:0x30444e,roughness:.35}));hole.position.set(ix*.09,.22,iz*.1);g.add(hole);}
+ const lever=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.45,10),metalMaterial());lever.position.set(.32,.36,0);lever.rotation.z=-.45;g.add(lever);
+ g.position.set(fx,.82,fz);return registerEquipment(g,'Encapsuladora');
+}
+function createMixer(fx,fz){
+ const g=new THREE.Group();const base=new THREE.Mesh(new THREE.CylinderGeometry(.24,.27,.16,22),new THREE.MeshStandardMaterial({color:0x596f79,roughness:.28,metalness:.32}));base.position.y=.08;g.add(base);
+ const bowl=new THREE.Mesh(new THREE.CylinderGeometry(.2,.14,.23,24,1,true),metalMaterial());bowl.position.y=.28;g.add(bowl);
+ const column=new THREE.Mesh(new THREE.CylinderGeometry(.035,.035,.48,12),metalMaterial());column.position.set(.23,.33,0);g.add(column);
+ const motor=new THREE.Mesh(new THREE.BoxGeometry(.22,.16,.2),new THREE.MeshStandardMaterial({color:0x79939c,roughness:.32,metalness:.18}));motor.position.set(.1,.56,0);g.add(motor);
+ g.position.set(fx,.82,fz);return registerEquipment(g,'Misturador de bancada');
+}
+function createRefrigerator(fx,fz){
+ const g=new THREE.Group();const body=new THREE.Mesh(new THREE.BoxGeometry(.9,1.5,.72),new THREE.MeshStandardMaterial({color:0xb7c8cd,roughness:.26,metalness:.24}));body.position.y=.75;body.castShadow=true;g.add(body);
+ const seam=new THREE.Mesh(new THREE.BoxGeometry(.82,.025,.02),new THREE.MeshStandardMaterial({color:0x718791,roughness:.3}));seam.position.set(0,.94,-.365);g.add(seam);
+ const handle=new THREE.Mesh(new THREE.BoxGeometry(.035,.55,.035),metalMaterial());handle.position.set(.32,.86,-.39);g.add(handle);
+ const display=new THREE.Mesh(new THREE.BoxGeometry(.22,.08,.025),new THREE.MeshStandardMaterial({color:0x17313a,emissive:0x46c9d8,emissiveIntensity:.35}));display.position.set(0,1.28,-.39);g.add(display);
+ g.position.set(fx,0,fz);return registerEquipment(g,'Refrigerador controlado');
+}
+function addSpecializedEquipment(){
+ const placements=[
+  [2,'Turbidímetro',15.15,8.65,'Avalia a turbidez de amostras, quando aplicável ao controle de qualidade.'],
+  [2,'Agitador vortex',18.75,8.65,'Homogeneíza pequenas amostras durante procedimentos analíticos.'],
+  [6,'Balança semi-analítica',13.2,14.85,'Auxilia a pesagem controlada de insumos conforme o procedimento.'],
+  [7,'Encapsuladora manual',20.25,14.85,'Permite o preenchimento organizado de cápsulas duras.'],
+  [7,'Peneira granulométrica',24.65,14.85,'Auxilia na padronização granulométrica de pós.'],
+  [8,'Homogeneizador de bancada',1.4,20.85,'Promove a homogeneização de preparações semissólidas.'],
+  [8,'Agitador magnético',7.55,20.85,'Auxilia a mistura controlada de soluções e dispersões.'],
+  [8,'Chapa aquecedora',2.6,17.0,'Permite aquecimento controlado conforme procedimento técnico.'],
+  [13,'Dinamizador homeopático',10.35,25.75,'Equipamento para sucussão conforme o processo homeopático aplicável.'],
+  [15,'Leitor de rastreabilidade',24.9,25.65,'Auxilia a identificação de lotes e conferência de recebimento.']
+ ];
+ placements.forEach(([room,name,x,z,info],idx)=>{
+  const g=new THREE.Group(),metal=new THREE.MeshStandardMaterial({color:0x8da2ad,roughness:.28,metalness:.72}),dark=new THREE.MeshStandardMaterial({color:0x2d4857,roughness:.38,metalness:.25});
+  const base=new THREE.Mesh(new THREE.BoxGeometry(.48,.32,.4),metal);base.position.y=.94;g.add(base);
+  const panel=new THREE.Mesh(new THREE.BoxGeometry(.26,.13,.025),dark);panel.position.set(0,1.04,-.215);g.add(panel);
+  const dial=new THREE.Mesh(new THREE.CylinderGeometry(.095,.095,.045,16),metal);dial.rotation.x=Math.PI/2;dial.position.set(.11,1.17,-.12);g.add(dial);
+  const top=new THREE.Mesh(new THREE.CylinderGeometry(.13,.13,.16,16),new THREE.MeshStandardMaterial({color:0xb6cbd0,metalness:.6,roughness:.25}));top.position.y=1.19;g.add(top);
+  g.position.set(x,0,z+ROOMS[room].z-([2,6,7,8,13,15].includes(room)?(room<4?4:room<8?10:room<12?16:22):4));g.userData={kind:'equipment',name,info};g.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;}});scene.add(g);interactive.push(g);
+ });
+}
+
+// V50: inventário técnico complementar. Os objetos ficam apoiados em bancadas,
+// armários ou prateleiras existentes, sem ocupar as passagens do avatar.
+const EXTRA_INVENTORY={
+ 0:['Receituário e fichas','Bandeja de dispensação','Frascos manipulados','Etiquetas de identificação','Conferidor de pedidos'],
+ 1:['Vade-mécum farmacêutico','Ficha de anamnese','Carimbo farmacêutico','Calculadora de doses','Porta-documentos'],
+ 2:['Tubos de ensaio','Proveta graduada','Pipetas volumétricas','Soluções tampão','Placas de Petri','Béqueres'],
+ 3:['Frascos âmbar de insumos','Etiquetas de lote','Caixas organizadoras','Registrador de temperatura','Potes de matéria-prima'],
+ 4:['Amostras em análise','Etiquetas de quarentena','Caixas segregadas','Ficha de recebimento','Frascos lacrados'],
+ 5:['Frascos aprovados','Etiquetas de liberação','Bandeja de separação','Potes identificados','Ficha de lote'],
+ 6:['Pesos-padrão de calibração','Barquinhas de pesagem','Espátulas de inox','Papel antiaderente','Frascos de pesagem','Ficha de pesagem'],
+ 7:['Cápsulas vazias','Placa encapsuladora','Gral e pistilo','Tamis de bancada','Potes de pós','Espátulas de mistura'],
+ 8:['Béquer graduado','Bastão de vidro','Potes de creme','Bisnagas vazias','Pipetas Pasteur','Frascos de solução'],
+ 9:['Toucas descartáveis','Máscaras de proteção','Luvas descartáveis','Propés','Aventais de proteção'],
+ 10:['Detergente de laboratório','Escovas de vidraria','Borrifador identificado','Panos de limpeza','Recipiente de resíduos'],
+ 11:['Caixas de expedição','Etiquetas de entrega','Lacre de segurança','Pedidos conferidos','Envelopes de transporte'],
+ 12:['Placa de fluxo técnico','Kit de emergência','Aviso de acesso restrito','Suporte de documentos'],
+ 13:['Frascos conta-gotas','Glóbulos homeopáticos','Frascos de vidro âmbar','Pipetas graduadas','Ficha de dinamização'],
+ 14:['Bisnagas de alumínio','Frascos PET','Potes cosméticos','Tampas rosqueáveis','Rolos de etiquetas'],
+ 15:['Caixas recebidas','Certificados de análise','Lacres de fornecedores','Etiquetas de recebimento','Ficha de conferência']
+};
+function addInventoryToFurniture(group,roomId,name,fw,fd,fh){
+ const mainSurface=/bancada|mesa|balcão|cabine|estante|prateleira|armário|área segregada|banco de troca|carrinho|quadro de fluxo/i.test(name);
+ if(!mainSurface)return;
+ const roomItems=EXTRA_INVENTORY[roomId]||[];
+ // A cada ambiente, um único móvel principal recebe um conjunto de objetos.
+ if(!window.__inventoryPlaced)window.__inventoryPlaced={};
+ if(window.__inventoryPlaced[roomId])return;
+ if(fw<1.4)return;
+ window.__inventoryPlaced[roomId]=true;
+ const glass=new THREE.MeshStandardMaterial({color:0xa4d3df,transparent:true,opacity:.68,roughness:.15,metalness:.12});
+ const amber=new THREE.MeshStandardMaterial({color:0x915a35,roughness:.25,metalness:.04});
+ const inox=new THREE.MeshStandardMaterial({color:0xaebfc5,metalness:.72,roughness:.23});
+ const paper=new THREE.MeshStandardMaterial({color:0xe7e5db,roughness:.86});
+ const white=new THREE.MeshStandardMaterial({color:0xe9f1f1,roughness:.45});
+ const capMat=new THREE.MeshStandardMaterial({color:0x334b56,roughness:.38});
+ const usable=Math.min(fw*.78,4.0),n=Math.min(roomItems.length,6);
+ for(let j=0;j<n;j++){
+  const label=roomItems[j],lower=label.toLowerCase();
+  const item=new THREE.Group(),px=(j-(n-1)/2)*usable/n;
+  const max=.26,baseY=fh+.09;
+  const mesh=(geometry,material,x,y,z)=>{const m=new THREE.Mesh(geometry,material);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;item.add(m);return m;};
+  if(/frasco|pote|solução|borrifador|detergente|reagente|pipeta|béquer|proveta|tubo|glóbulo|cosmético/i.test(lower)){
+   const radius=.075+(j%2)*.014;
+   mesh(new THREE.CylinderGeometry(radius*.78,radius,.27,10),/frasco|glóbulo|pote/i.test(lower)?amber:glass,0,.15,0);
+   mesh(new THREE.CylinderGeometry(radius*.78,radius*.78,.04,10),capMat,0,.30,0);
+   mesh(new THREE.BoxGeometry(radius*1.2,.075,.009),white,0,.15,-radius-.002);
+  }else if(/etiqueta|ficha|receituário|certificado|documento|pedido|vade-mécum|placa|aviso|anamnese/i.test(lower)){
+   mesh(new THREE.BoxGeometry(.24,.035,.18),paper,0,.035,0);
+   for(let k=0;k<3;k++)mesh(new THREE.BoxGeometry(.15,.004,.009),capMat,-.025,.057,-.048+k*.045);
+  }else if(/cápsula|luva|máscara|touca|propé|lacre|tampa|peso-padrão|glóbulo/i.test(lower)){
+   const tray=mesh(new THREE.BoxGeometry(.27,.045,.21),inox,0,.035,0);
+   for(let k=0;k<4;k++)mesh(new THREE.SphereGeometry(.035,8,6),k%2?white:amber,(k%2-.5)*.11,.09,(Math.floor(k/2)-.5)*.09);
+  }else if(/caixa|bandeja|envelope|organizador|kit|recipiente/i.test(lower)){
+   mesh(new THREE.BoxGeometry(.24,.16,.20),j%2?paper:inox,0,.09,0);
+   mesh(new THREE.BoxGeometry(.14,.055,.008),white,0,.10,-.105);
+  }else{
+   mesh(new THREE.CylinderGeometry(.055,.055,.18,12),inox,0,.11,0);
+   mesh(new THREE.BoxGeometry(.14,.045,.10),capMat,0,.23,0);
+  }
+  item.position.set(px,baseY,fd*.04);
+  item.userData={kind:'equipment',name:label,info:'Item utilizado em '+ROOMS[roomId].name.toLowerCase()+'. Apoia a organização, a rastreabilidade e a execução das atividades específicas deste ambiente.'};
+  group.add(item);
+  interactive.push(item);
+ }
+}
+
+function createFurniture(r,i){
+ const x=r.x,z=r.z,w=r.w,d=r.d;
+ const counter=(name,fx,fz,fw,fd,fh=.78,color=0x9dbbc8)=>{const group=new THREE.Group(); const finalColor=equipmentColor(name,color); const body=new THREE.Mesh(new THREE.BoxGeometry(fw,fh,fd),new THREE.MeshStandardMaterial({color:finalColor,roughness:.4,metalness:.14})); body.position.y=fh/2; body.castShadow=true; body.receiveShadow=true; group.add(body); const top=new THREE.Mesh(new THREE.BoxGeometry(fw+.055,.07,fd+.055),new THREE.MeshStandardMaterial({color:0xbecbd0,roughness:.2,metalness:.42})); top.position.y=fh+.035; top.castShadow=true; group.add(top); const trim=new THREE.Mesh(new THREE.BoxGeometry(fw+.03,.04,fd+.03),new THREE.MeshStandardMaterial({color:0x303c42,roughness:.38,metalness:.28})); trim.position.y=fh-.018; group.add(trim); const legMat=metalMaterial(); [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx,sz])=>{const leg=new THREE.Mesh(new THREE.BoxGeometry(.075,fh,.075),legMat); leg.position.set((fw/2-.12)*sx,fh/2,(fd/2-.12)*sz); leg.castShadow=true; group.add(leg);}); addEquipmentDetails(group,name,fw,fd,fh); addInventoryToFurniture(group,i,name,fw,fd,fh); group.position.set(fx,0,fz); group.userData={kind:'equipment',name,info:equipmentInfo(name)}; scene.add(group); interactive.push(group); return group;};
+ const prop=(name,fx,fz,kind='box',scale=.45,color=0x6f98a8)=>{let g,material;const n=(name||'').toLowerCase(); if(kind==='cyl'){g=new THREE.CylinderGeometry(scale*.55,scale*.55,scale,22);material=n.includes('frasco')||n.includes('conta-gotas')||n.includes('pote')?new THREE.MeshStandardMaterial({color:0x8b5b39,roughness:.34,metalness:.06}):new THREE.MeshStandardMaterial({color:0x6d7f88,roughness:.2,metalness:.82});} else if(kind==='sphere'){g=new THREE.SphereGeometry(scale*.45,22,18); material=new THREE.MeshStandardMaterial({color,roughness:.38,metalness:.14});} else {g=new THREE.BoxGeometry(scale,scale*.75,scale*.7); material=new THREE.MeshStandardMaterial({color,roughness:.36,metalness:.16});} const m=new THREE.Mesh(g,material); m.position.set(fx,.84+scale*.35,fz); m.castShadow=true; m.receiveShadow=true; if(n.includes('extintor'))m.material.color.setHex(0xc83832); if(n.includes('etiqueta'))m.material.color.setHex(0xe4c35b); if(n.includes('balança'))m.material.color.setHex(0x586f7a); if(n.includes('microscópio'))m.material.color.setHex(0x4a6672); m.userData={kind:'equipment',name,info:equipmentInfo(name)}; scene.add(m); interactive.push(m); return m;};
+ if(i===0){counter('Balcão de atendimento',x+2.15,z+1.25,3.35,.8,.9,0xaabdc4);counter('Computador de atendimento',x+1.65,z+1.0,.68,.2,.52,0x536f7b);counter('Impressora de pedidos',x+3.3,z+1.03,.62,.22,.38,0x8b9ba2);counter('Terminal de pagamento',x+5.95,z+1.28,1.4,.72,.9,0xb8c8cc);counter('Prateleira de produtos',x+6.85,z+4.65,.72,1.8,1.38,0x85989d);prop('Leitor de código de barras',x+2.55,z+1.02,'box',.26,0x455b65);prop('Organizador de receitas',x+5.1,z+1.02,'box',.3,0xc8ae86);createChair(x+3.5,z+2.6);}
+ else if(i===1){counter('Mesa de avaliação',x+2.4,z+2.25,2.8,1.05,.78,0xb8c5c8);counter('Computador',x+2.4,z+1.85,.65,.18,.52,0x526f7a);counter('Arquivo de referências',x+5.15,z+4.45,.75,1.55,1.35,0x809195);createChair(x+1.1,z+2.45,0x617783);createChair(x+3.8,z+2.45,0x617783);}
+ else if(i===2){counter('Bancada de análises',x+3,z+3.25,4.4,.92,.84,0xa6bdc2);createScaleDetail(x+1.8,z+3.05);prop('pHmetro',x+2.7,z+3.0,'cyl',.48);prop('Microscópio',x+3.7,z+3.0,'box',.5,0x637a84);prop('Vidraria volumétrica',x+4.7,z+3.0,'cyl',.4,0x9bc7d2);prop('Termômetro calibrado',x+5.45,z+3.02,'box',.24,0xe7c96a);counter('Armário de reagentes',x+1.0,z+5.0,.75,1.3,1.4,0x7f9198);}
+ else if(i===3){for(let k=0;k<3;k++)counter('Estante de matérias-primas',x+1.0+k*1.75,z+d-1,.72,2.25,1.5,0x839397);counter('Armário de segregação',x+w-1.75,z+d-1,.82,2.15,1.48,0x788b91);counter('Refrigerador controlado',x+w-1.05,z+1.35,1.2,.92,1.58,0xb6c5c9);prop('Termo-higrômetro',x+1.1,z+1.25,'box',.3);createBottleCluster(x+3.0,z+1.45,6,0xb68b55);}
+ else if(i===4){for(let k=0;k<2;k++)counter('Estante de quarentena',x+1.1+k*(w-2.2),z+d-1,.9,2.25,1.48,0xb99962);counter('Área segregada',x+w/2,z+2.0,1.7,1.1,.28,0xb28f55);prop('Etiquetas de status',x+w/2,z+2.75,'box',.28,0xe5a642);}
+ else if(i===5){for(let k=0;k<2;k++)counter('Estante de insumos aprovados',x+1.1+k*(w-2.2),z+d-1,.9,2.25,1.48,0x789e84);prop('Carrinho de separação',x+w/2,z+2.0,'box',.58,0x6c9585);createBottleCluster(x+1.5,z+1.4,4,0xd0b486);createBottleCluster(x+w-1.5,z+1.4,4,0xd0b486);}
+ else if(i===6){counter('Cabine de pesagem',x+3.5,z+3.25,5.0,1.35,1.08,0xaac0c7);createScaleDetail(x+3.2,z+2.85);prop('Espátulas inox',x+4.15,z+2.82,'box',.24,0x6f8189);prop('Etiquetadora',x+2.3,z+2.82,'box',.4,0x647984);prop('Papel de pesagem',x+4.75,z+2.82,'box',.18,0xf0efe3);prop('Recipiente de resíduos',x+5.65,z+4.4,'cyl',.38,0x70827c);}
+ else if(i===7){counter('Bancada de manipulação',x+w/2,z+3.4,Math.max(3.4,w-1.7),1.05,.84,0xa5bdbc);createScaleDetail(x+w/2-2.1,z+3.1);prop('Encapsuladora',x+w/2-1.15,z+3.1,'box',.65,0x778f95);prop('Tamis',x+w/2,z+3.1,'cyl',.5,0x9fb3b7);prop('Gral e pistilo',x+w/2+1.1,z+3.1,'sphere',.5,0x8da0a5);createBottleCluster(x+w/2+2.0,z+3.1,4,0xd1b58b);counter('Armário de utensílios',x+w-1,z+5.1,.75,1.3,1.4,0x7c9093);}
+ else if(i===8){counter('Bancada de manipulação',x+w/2,z+3.4,Math.max(3.6,w-1.8),1.05,.84,0xa5bdbc);createScaleDetail(x+w/2-2.2,z+3.1);prop('Misturador de bancada',x+w/2-1.2,z+3.1,'cyl',.64,0x78949b);prop('Pipeta graduada',x+w/2,z+3.1,'cyl',.34,0x9bc9d1);prop('Espátulas de silicone',x+w/2+.8,z+3.1,'box',.23,0xd1b9b1);createBottleCluster(x+w/2+1.8,z+3.1,5,0xb88459);counter('Armário de utensílios',x+w-1,z+5.1,.75,1.3,1.4,0x7c9093);}
+ else if(i===9){createStainlessSink(x+1.15,z+1.35,.9,.52);prop('Dispenser de sabonete',x+1.85,z+1.25,'box',.3,0x78b2b7);counter('Banco de troca',x+w/2,z+3.6,2.5,.72,.48,0xaebdc1);counter('Armário de EPIs',x+w-1,z+4.55,.82,1.25,1.48,0x819498);prop('Toucas e propés',x+w/2+1.55,z+3.58,'box',.34,0x98c7d3);prop('Lixeira com pedal',x+2.55,z+1.35,'cyl',.36,0x687b82);}
+ else if(i===10){createStainlessSink(x+1.3,z+1.55,1.4,.7);counter('Armário de saneantes',x+w-1,z+4.5,.85,1.35,1.48,0x839599);prop('Carrinho de limpeza',x+3.4,z+3.0,'box',.62,0x77979a);prop('Mop e baldes identificados',x+4.55,z+3.0,'box',.54,0x829dab);}
+ else if(i===11){counter('Bancada de conferência',x+w/2,z+2.35,3.6,.88,.84,0xaabec3);counter('Computador',x+w/2-1.1,z+2.0,.65,.2,.5,0x526f7a);prop('Impressora de etiquetas',x+w/2+.9,z+2.02,'box',.42,0x607a88);counter('Prateleira de pedidos',x+w-1,z+d-1,.78,2.05,1.38,0x82959a);prop('Materiais de embalagem',x+w/2+1.8,z+2.0,'box',.46,0xd0baa0);}
+ else if(i===12){counter('Quadro de fluxo',x+1.35,z+1.2,1.65,.18,1.3,0xa3c5d2);prop('Sinalização de setores',x+2.5,z+3.0,'box',.42,0xe9d789);prop('Extintor de incêndio',x+w-1,z+2,'cyl',.56,0xc83832);prop('Luminária de emergência',x+w/2,z+d-1,'box',.4,0xf2e19c);}
+ else if(i===13){counter('Bancada de manipulação',x+w/2,z+3.2,Math.max(3.2,w-1.8),1,.84,0xa7bdbd);createScaleDetail(x+w/2-1.8,z+2.92);prop('Frascos conta-gotas',x+w/2-1,z+2.95,'cyl',.42,0x8c684e);prop('Almofariz e pistilo',x+w/2,z+2.95,'sphere',.48,0x92a5aa);createBottleCluster(x+w/2+1.05,z+2.95,5,0x7a4f31);counter('Armário de insumos homeopáticos',x+w-1,z+4.5,.78,1.3,1.4,0x7d8f93);}
+ else if(i===14){for(let k=0;k<2;k++)counter('Estantes de embalagens',x+1+k*(w-2),z+d-1,.78,2.05,1.42,0x8a999d);createBottleCluster(x+w/2-1,z+2.1,5,0xd4c6b7);prop('Bisnagas',x+w/2,z+2.1,'cyl',.32,0xded7d0);prop('Etiquetas',x+w/2+1,z+2.1,'box',.28,0xe6d7a9);prop('Tampas e acessórios',x+w/2+1.75,z+2.1,'box',.27,0xc9d1d6);}
+ else if(i===15){counter('Bancada de conferência',x+w/2,z+2.25,3.3,.88,.84,0xaabec3);prop('Pasta de laudos',x+w/2-1.9,z+1.95,'box',.32,0x556976);prop('Leitor de código de barras',x+w/2-1,z+1.95,'box',.3,0x596f7a);prop('Caixas de matéria-prima',x+w/2+.85,z+2.0,'box',.66,0xc99c68);counter('Carrinho de recebimento',x+w-1,z+d-1.1,.82,1.25,.66,0x879da3);counter('Mesa de triagem',x+1.25,z+d-1.1,1.6,.75,.75,0x9aadb2);}
+}
+function equipmentInfo(name){
+ for(const items of Object.values(ROOM_CONTENTS)){const hit=items.find(x=>x[0]===name);if(hit)return hit[1];}
+ const aliases={'Computador':'Acesso ao sistema, consulta e registro das informações do processo.','Bancada de manipulação':'Superfície técnica para execução das atividades de manipulação.','Bancada de conferência':'Área destinada à conferência antes da liberação ou expedição.','Impressora de pedidos':'Impressão de documentos, etiquetas e ordens internas.','Organizador de receitas':'Apoio à organização física das prescrições.','Cadeira de atendimento':'Apoio ao atendimento individual.','Armário de segregação':'Armazenamento segregado de itens com requisito específico.','Frascos e potes identificados':'Acondicionamento rastreável dos insumos.','Área segregada':'Delimitação visual da área de quarentena.','Potes identificados':'Identificação por lote, validade e descrição.','Etiquetas de rastreabilidade':'Apoio à rastreabilidade do processo.','Papel de pesagem':'Apoio ao fracionamento e pesagem.','Recipiente de resíduos':'Descarte seguro conforme procedimento.','Potes e cápsulas vazias':'Acondicionamento temporário durante a produção.','Espátulas de silicone':'Manipulação de semissólidos e raspagem de formulações.','Toucas e propés':'Itens de paramentação obrigatória.','Lixeira com pedal':'Descarte sem contato manual.','Mop e baldes identificados':'Execução controlada da higienização.','Materiais de embalagem':'Proteção e acondicionamento final do produto.','Sinalização de setores':'Identificação visual dos acessos e barreiras.','Tampas e acessórios':'Complementos de fechamento e dispensação.','Pasta de laudos':'Conferência documental do fornecedor.','Armário de reagentes':'Armazenamento organizado de reagentes de controle.','Armário de utensílios':'Armazenamento de utensílios higienizados e de uso técnico.','Armário de insumos homeopáticos':'Armazenamento organizado de insumos e frascos homeopáticos.','Mesa de triagem':'Apoio à conferência inicial dos volumes recebidos.'};
+ return aliases[name]||'Elemento de apoio ao processo farmacêutico.';
+}
+function createTextSprite(text,bg='#ffffff',fg='#184d68',scale=1){
+ const c=document.createElement('canvas'),ctx=c.getContext('2d'); const dpr=2;c.width=900*dpr;c.height=160*dpr;ctx.scale(dpr,dpr);ctx.font='700 34px Inter, Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle=bg;roundRect(ctx,8,12,884,136,26);ctx.fill();ctx.strokeStyle='#97bdcc';ctx.lineWidth=4;ctx.stroke();ctx.fillStyle=fg;wrapCanvasText(ctx,text,450,80,820,38);
+ const tex=new THREE.CanvasTexture(c);tex.minFilter=THREE.LinearFilter;tex.generateMipmaps=false;const material=new THREE.SpriteMaterial({map:tex,transparent:true,depthTest:false});const s=new THREE.Sprite(material);s.scale.set(4.7*scale,.84*scale,1);s.renderOrder=20;return s;
+}
+function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+function wrapCanvasText(ctx,text,x,y,maxWidth,lineH){const words=text.split(' '),lines=[];let line='';for(const word of words){const test=line?line+' '+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word;}else line=test;}lines.push(line);const start=y-(lines.length-1)*lineH/2;lines.slice(0,2).forEach((l,i)=>ctx.fillText(l,x,start+i*lineH));}
+function createRoomLabel(r,i){const bg='#'+(ROOM_ACCENT[r.type]||0x526d7a).toString(16).padStart(6,'0');const s=createTextSprite(r.name,bg,'#ffffff',r.name.length>28?.9:1);s.position.set(r.x+r.w/2,2.72,r.z+r.d/2);s.userData.room=i;scene.add(s);labels.push(s);}
+function createRoomContentPanel(r,i){const items=(ROOM_CONTENTS[i]||[]).slice(0,4).map(x=>'• '+x[0]);const bg='#'+(ROOM_ACCENT[r.type]||0x496471).toString(16).padStart(6,'0');const panel=createTextSprite(items.length?items.join('   '):'Sem itens cadastrados',bg,'#ffffff',.72);panel.position.set(r.x+r.w/2,1.26,r.z+r.d/2);panel.scale.set(Math.min(6.6,Math.max(4.4,r.w*.66)),.76,1);panel.userData.room=i;scene.add(panel);contentPanels.push(panel);}
+function createSign(text,x,y,z,color,w=4,h=.7){const s=createTextSprite(text,'#ffffff','#d71920',1);s.position.set(x,y,z);s.scale.set(w,h,1);scene.add(s);return s;}
+// Grafo de salas adjacentes: travessias somente pelos vãos de porta.
+function sharedDoor(a,b){
+ const eps=.001,overlap=(p,q,u,v)=>Math.min(q,v)-Math.max(p,u);
+ if(Math.abs(a.x+a.w-b.x)<eps||Math.abs(b.x+b.w-a.x)<eps){
+  const lo=Math.max(a.z,b.z),hi=Math.min(a.z+a.d,b.z+b.d);
+  if(hi-lo>1.8)return new THREE.Vector3(Math.abs(a.x+a.w-b.x)<eps?a.x+a.w:a.x,.18,(lo+hi)/2);
+ }
+ if(Math.abs(a.z+a.d-b.z)<eps||Math.abs(b.z+b.d-a.z)<eps){
+  const lo=Math.max(a.x,b.x),hi=Math.min(a.x+a.w,b.x+b.w);
+  if(hi-lo>1.8)return new THREE.Vector3((lo+hi)/2,.18,Math.abs(a.z+a.d-b.z)<eps?a.z+a.d:a.z);
+ }
+ return null;
+}
+function roomChain(from,to){
+ if(from===to)return [from];
+ const queue=[[from]],seen=new Set([from]);
+ while(queue.length){const path=queue.shift(),last=path[path.length-1];
+  for(let j=0;j<ROOMS.length;j++)if(!seen.has(j)&&sharedDoor(ROOMS[last],ROOMS[j])){
+   const next=path.concat(j);if(j===to)return next;seen.add(j);queue.push(next);
+  }
+ }
+ return [from,to];
+}
+// Navegação local por grade A*: considera a projeção no piso de móveis e equipamentos.
+// O raio de segurança mantém o avatar afastado das superfícies.
+const AVATAR_CLEARANCE=.30;
+function roomObstacles(roomId){
+ const r=ROOMS[roomId],out=[];
+ for(const item of interactive){
+  if(item.userData?.kind!=='equipment')continue;
+  item.updateMatrixWorld(true);
+  const bounds=new THREE.Box3().setFromObject(item);
+  if(bounds.isEmpty()||bounds.max.y<.17||bounds.min.y>1.6)continue;
+  // Objetos apoiados sobre bancadas não devem criar bloqueios independentes.
+  const midX=(bounds.min.x+bounds.max.x)/2,midZ=(bounds.min.z+bounds.max.z)/2;
+  if(midX<r.x-.02||midX>r.x+r.w+.02||midZ<r.z-.02||midZ>r.z+r.d+.02)continue;
+  const pad=AVATAR_CLEARANCE;
+  out.push({minX:bounds.min.x-pad,maxX:bounds.max.x+pad,minZ:bounds.min.z-pad,maxZ:bounds.max.z+pad});
+ }
+ return out;
+}
+function routeInsideRoom(roomId,from,to){
+ const r=ROOMS[roomId],step=.22,margin=.20;
+ const nx=Math.max(2,Math.ceil((r.w-2*margin)/step)),nz=Math.max(2,Math.ceil((r.d-2*margin)/step));
+ const dx=(r.w-2*margin)/nx,dz=(r.d-2*margin)/nz;
+ const obstacles=roomObstacles(roomId);
+ const pos=(i,j)=>new THREE.Vector3(r.x+margin+i*dx,.18,r.z+margin+j*dz);
+ const index=(i,j)=>j*(nx+1)+i;
+ const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+ const grid=(p)=>[clamp(Math.round((p.x-r.x-margin)/dx),0,nx),clamp(Math.round((p.z-r.z-margin)/dz),0,nz)];
+ const count=(nx+1)*(nz+1),blocked=new Uint8Array(count);
+ for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){
+  const p=pos(i,j);if(obstacles.some(o=>p.x>o.minX&&p.x<o.maxX&&p.z>o.minZ&&p.z<o.maxZ))blocked[index(i,j)]=1;
+ }
+ const nearestFree=(p)=>{
+  const [ci,cj]=grid(p);let best=-1,score=Infinity;
+  for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){
+   const k=index(i,j);if(blocked[k])continue;
+   const dist=(i-ci)**2+(j-cj)**2;
+   if(dist<score){score=dist;best=k;}
+  }return best;
+ };
+ const start=nearestFree(from),goal=nearestFree(to);
+ if(start<0||goal<0)return [from.clone(),to.clone()];
+ const g=new Float64Array(count).fill(Infinity),f=new Float64Array(count).fill(Infinity),prev=new Int32Array(count).fill(-1),closed=new Uint8Array(count),open=[start];
+ const heuristic=(k)=>{const i=k%(nx+1),j=Math.floor(k/(nx+1)),gi=goal%(nx+1),gj=Math.floor(goal/(nx+1));return Math.hypot((i-gi)*dx,(j-gj)*dz);};
+ g[start]=0;f[start]=heuristic(start);
+ while(open.length){
+  let best=0;for(let n=1;n<open.length;n++)if(f[open[n]]<f[open[best]])best=n;
+  const cur=open.splice(best,1)[0];if(cur===goal)break;if(closed[cur])continue;closed[cur]=1;
+  const i=cur%(nx+1),j=Math.floor(cur/(nx+1));
+  for(const [di,dj] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]]){
+   const x=i+di,z=j+dj;if(x<0||x>nx||z<0||z>nz)continue;
+   const k=index(x,z);if(blocked[k]||closed[k])continue;
+   // Evita cortar quinas na diagonal.
+   if(di&&dj&&(blocked[index(i+di,j)]||blocked[index(i,j+dj)]))continue;
+   const cand=g[cur]+Math.hypot(di*dx,dj*dz);
+   if(cand<g[k]){prev[k]=cur;g[k]=cand;f[k]=cand+heuristic(k);if(!open.includes(k))open.push(k);}
+  }
+ }
+ if(goal!==start&&prev[goal]<0){console.warn('Sem corredor livre no ambiente',r.name);return [from.clone(),to.clone()];}
+ const indices=[goal];while(indices[indices.length-1]!==start){indices.push(prev[indices[indices.length-1]]);if(indices.length>count)break;}indices.reverse();
+ const path=indices.map(k=>pos(k%(nx+1),Math.floor(k/(nx+1))));
+ // Conserva as extremidades apenas quando livres; senão, aproxima para o ponto seguro.
+ const free=p=>!obstacles.some(o=>p.x>o.minX&&p.x<o.maxX&&p.z>o.minZ&&p.z<o.maxZ);
+ if(free(from))path.unshift(from.clone());
+ if(free(to))path.push(to.clone());
+ // Simplificação apenas em trechos com visibilidade livre.
+ const visible=(a,b)=>{const len=a.distanceTo(b),n=Math.max(1,Math.ceil(len/.10));for(let t=0;t<=n;t++){const p=a.clone().lerp(b,t/n);if(!free(p))return false;}return true;};
+ const smooth=[];for(let i=0;i<path.length;){smooth.push(path[i]);if(i===path.length-1)break;let j=path.length-1;while(j>i+1&&!visible(path[i],path[j]))j--;i=j;}
+ return smooth;
+}
+function buildPathData(stops){
+ const points=[],stopPointIndices=[];
+ const push=p=>{if(!points.length||points[points.length-1].distanceTo(p)>.02)points.push(p.clone());};
+ const inside=(id,a,b)=>routeInsideRoom(id,a,b).forEach(push);
+ stops.forEach((id,idx)=>{
+  if(!idx){inside(id,roomCenter(id),roomCenter(id));}
+  else{
+   const previous=stops[idx-1];
+   // Atalho direto apenas quando há parede compartilhada com porta lateral real.
+   // Nunca atravessa uma terceira sala; as demais conexões usam os corredores.
+   const direct=sharedDoor(ROOMS[previous],ROOMS[id]);
+   const lateral=direct && Math.abs(ROOMS[previous].z-ROOMS[id].z)<.001 &&
+      Math.abs(ROOMS[previous].d-ROOMS[id].d)<.001;
+   if(lateral){
+    const fromDoor=direct.clone(),toDoor=direct.clone();
+    const direction=ROOMS[id].x>ROOMS[previous].x?1:-1;
+    fromDoor.x-=direction*.38;toDoor.x+=direction*.38;
+    inside(previous,points[points.length-1],fromDoor);
+    push(direct);push(toDoor);
+    inside(id,toDoor,roomCenter(id));
+   }else{
+   inside(previous,points[points.length-1],roomEntrance(previous));
+   push(hallEntry(previous));
+   const startZ=corridorZ(previous),endZ=corridorZ(id);
+   if(Math.abs(startZ-endZ)>.01){
+    // Escolhe a espinha lateral mais curta, sem atravessar nenhum cômodo.
+    const entryX=hallEntry(previous).x,exitX=hallEntry(id).x;
+    const viaLeft=Math.abs(entryX-CORRIDOR_LEFT_X)+Math.abs(exitX-CORRIDOR_LEFT_X);
+    const viaRight=Math.abs(entryX-CORRIDOR_RIGHT_X)+Math.abs(exitX-CORRIDOR_RIGHT_X);
+    const spineX=viaLeft<=viaRight?CORRIDOR_LEFT_X:CORRIDOR_RIGHT_X;
+    push(corridorPoint(spineX,startZ));
+    push(corridorPoint(spineX,endZ));
+   }
+   push(hallEntry(id));
+   push(roomEntrance(id));
+   inside(id,roomEntrance(id),roomCenter(id));
+   }
+  }
+  stopPointIndices.push(points.length-1);
+ });
+ const cumulative=[0];for(let i=1;i<points.length;i++)cumulative.push(cumulative[i-1]+points[i].distanceTo(points[i-1]));
+ const total=Math.max(cumulative[cumulative.length-1]||1,.0001);
+ return {points,cumulative,total,stopProgresses:stopPointIndices.map(i=>cumulative[i]/total)};
+}
+function getPointAlongPath(data,t){if(!data||!data.points.length)return new THREE.Vector3();const target=Math.max(0,Math.min(1,t))*data.total;for(let i=1;i<data.points.length;i++){const segStart=data.cumulative[i-1],segEnd=data.cumulative[i];if(target<=segEnd||i===data.points.length-1){const span=Math.max(segEnd-segStart,.0001),alpha=(target-segStart)/span;return data.points[i-1].clone().lerp(data.points[i],Math.max(0,Math.min(1,alpha)));}}return data.points[data.points.length-1].clone();}
+function getDirectionAlongPath(data,t){const a=getPointAlongPath(data,Math.max(0,t-.003));const b=getPointAlongPath(data,Math.min(1,t+.003));return b.sub(a);}
+function createRoutes(){ROUTES.forEach((r,ri)=>{const group=new THREE.Group();group.name='route-'+r.id;const pathData=buildPathData(r.stops);const pts=pathData.points;for(let i=0;i<pts.length-1;i++){const a=pts[i],b=pts[i+1],mid=a.clone().add(b).multiplyScalar(.5),len=a.distanceTo(b);const strip=new THREE.Mesh(new THREE.BoxGeometry(.38,.045,len),new THREE.MeshStandardMaterial({color:r.color,emissive:r.color,emissiveIntensity:.18,roughness:.55}));strip.position.copy(mid);strip.lookAt(b);strip.position.y=.17;group.add(strip);}
+ const markers=[];r.stops.forEach((roomId,si)=>{const room=ROOMS[roomId],p=new THREE.Vector3(room.x+room.w/2,.22,room.z+room.d/2);const ring=new THREE.Mesh(new THREE.TorusGeometry(.42,.09,10,28),new THREE.MeshStandardMaterial({color:r.color,emissive:r.color,emissiveIntensity:.22}));ring.rotation.x=Math.PI/2;ring.position.copy(p);ring.userData={route:ri,step:si};group.add(ring);markers.push(ring);});stepMarkers.set(r.id,markers);group.visible=selectedRoutes.has(r.id);scene.add(group);routeGroups.set(r.id,group);});}
+function createPharmacist(){
+ pharmacist=new THREE.Group(); pharmacist.name='Mini farmacêutico';
+ const skin=mat(0xe0ad89),coat=mat(0xe0ecee,.72),pants=mat(0x1f7b77,.55),shoe=mat(0x24343d,.48),capMat=mat(0x4a9c98,.58),red=mat(0xd71920),gloveMat=mat(0x9ed0da,.48),maskMat=mat(0xcfe7ee,.54),hair=mat(0x2a3238,.9);
+ const floorShadow=new THREE.Mesh(new THREE.CircleGeometry(.42,32),new THREE.MeshBasicMaterial({color:0x152027,transparent:true,opacity:.28,depthWrite:false})); floorShadow.rotation.x=-Math.PI/2; floorShadow.position.y=.024; pharmacist.add(floorShadow);
+ const baseDisc=new THREE.Mesh(new THREE.CylinderGeometry(.38,.38,.045,32),new THREE.MeshStandardMaterial({color:0xd71920,emissive:0xa11218,emissiveIntensity:.24,roughness:.42,metalness:.08})); baseDisc.position.y=.03; pharmacist.add(baseDisc);
+ const legsCore=new THREE.Mesh(new THREE.BoxGeometry(.28,.58,.18),pants); legsCore.position.set(0,.64,0); legsCore.castShadow=true; pharmacist.add(legsCore);
+ const torso=new THREE.Mesh(new THREE.BoxGeometry(.5,.72,.28),coat);torso.position.y=1.23;torso.castShadow=true;pharmacist.add(torso);
+ const scrubTop=new THREE.Mesh(new THREE.BoxGeometry(.28,.54,.16),pants); scrubTop.position.set(0,1.18,.055); scrubTop.castShadow=true; pharmacist.add(scrubTop);
+ const shoulder=new THREE.Mesh(new THREE.BoxGeometry(.56,.08,.31),red);shoulder.position.y=1.53;shoulder.castShadow=true;pharmacist.add(shoulder);
+ const coatLine=new THREE.Mesh(new THREE.BoxGeometry(.03,.7,.29),red); coatLine.position.set(0,1.23,.145); pharmacist.add(coatLine);
+ const pocketL=new THREE.Mesh(new THREE.BoxGeometry(.09,.12,.02),coat); pocketL.position.set(-.12,1.12,.15); pharmacist.add(pocketL); const pocketR=pocketL.clone(); pocketR.position.x=.12; pharmacist.add(pocketR);
+ const head=new THREE.Mesh(new THREE.SphereGeometry(.245,22,18),skin);head.position.y=1.82;head.castShadow=true;head.receiveShadow=true;pharmacist.add(head);
+ const cap=new THREE.Mesh(new THREE.SphereGeometry(.265,22,10,0,Math.PI*2,0,Math.PI/2),new THREE.MeshStandardMaterial({color:0x4a9c98,roughness:.5,metalness:.02,emissive:0x123c3c,emissiveIntensity:.08}));cap.position.set(0,1.94,0);cap.castShadow=true;pharmacist.add(cap);
+ const hairBand=new THREE.Mesh(new THREE.TorusGeometry(.19,.024,10,28),hair); hairBand.rotation.x=Math.PI/2; hairBand.position.set(0,1.86,.01); pharmacist.add(hairBand);
+ const mask=new THREE.Mesh(new THREE.BoxGeometry(.23,.11,.055),maskMat); mask.position.set(0,1.76,.205); pharmacist.add(mask);
+ const faceMark=new THREE.Mesh(new THREE.BoxGeometry(.06,.025,.018),red); faceMark.position.set(0,1.84,.238); pharmacist.add(faceMark);
+ const headHalo=new THREE.Mesh(new THREE.RingGeometry(.29,.35,32),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.18,side:THREE.DoubleSide,depthWrite:false})); headHalo.position.set(0,1.86,-.05); headHalo.renderOrder=15; pharmacist.add(headHalo);
+ const badge=new THREE.Mesh(new THREE.BoxGeometry(.12,.08,.02),red);badge.position.set(.15,1.34,.155);pharmacist.add(badge);
+ const visor=new THREE.Mesh(new THREE.BoxGeometry(.26,.08,.025),new THREE.MeshStandardMaterial({color:0xbfe4ee,transparent:true,opacity:.4,roughness:.1,metalness:.05}));visor.position.set(0,1.87,.23);pharmacist.add(visor);
+ const collar=new THREE.Mesh(new THREE.TorusGeometry(.17,.025,10,24),pants);collar.rotation.x=Math.PI/2;collar.position.set(0,1.51,.02);pharmacist.add(collar);
+ ['L','R'].forEach((side,idx)=>{const s=idx?-1:1;const arm=new THREE.Mesh(new THREE.CylinderGeometry(.055,.055,.57,10),coat);arm.position.set(.31*s,1.28,0);arm.rotation.z=s*.08;pharmacist.add(arm);bodyParts['arm'+side]=arm;const glove=new THREE.Mesh(new THREE.SphereGeometry(.07,12,10),gloveMat);glove.position.set(.34*s,.98,.02);pharmacist.add(glove);const leg=new THREE.Mesh(new THREE.CylinderGeometry(.065,.065,.65,10),pants);leg.position.set(.13*s,.56,0);pharmacist.add(leg);bodyParts['leg'+side]=leg;});
+ const shoeL=new THREE.Mesh(new THREE.BoxGeometry(.16,.1,.28),shoe);shoeL.position.set(.13,.2,-.05);pharmacist.add(shoeL);const shoeR=shoeL.clone();shoeR.position.x=-.13;pharmacist.add(shoeR);const coverMat=new THREE.MeshStandardMaterial({color:0x93cedc,transparent:true,opacity:.72,roughness:.5});const coverL=new THREE.Mesh(new THREE.BoxGeometry(.18,.06,.3),coverMat);coverL.position.set(.13,.22,-.05);pharmacist.add(coverL);const coverR=coverL.clone();coverR.position.x=-.13;pharmacist.add(coverR);
+ pharmacist.position.set(4,.02,7);pharmacist.scale.setScalar(1.17);scene.add(pharmacist);
+}
+function buildUI(){
+ const list=$('routeList');ROUTES.forEach((r,i)=>{const card=document.createElement('label');card.className='route-card'+(selectedRoutes.has(r.id)?' active':'');card.innerHTML=`<div class="route-head"><input type="checkbox" data-route="${r.id}" ${selectedRoutes.has(r.id)?'checked':''}><span class="swatch" style="background:${r.hex}"></span><div><div class="route-name">${r.name}</div><div class="route-meta">${r.stops.length} etapas</div></div></div><div class="route-details">${r.description}</div>`;list.appendChild(card);const cb=card.querySelector('input');cb.addEventListener('change',()=>{if(cb.checked){selectedRoutes.add(r.id);setActiveRoute(i,false);}else{selectedRoutes.delete(r.id);if(activeRouteIndex===i){const first=ROUTES.findIndex(route=>selectedRoutes.has(route.id));if(first>=0)setActiveRoute(first,false);else stopSimulation();}}syncCheckboxes();syncRouteVisibility();updateStepUI();updateDock();});});
+ const picker=$('roomPicker');ROOMS.forEach((room,i)=>{const option=document.createElement('option');option.value=String(i);option.textContent=room.name;picker.appendChild(option);});picker.addEventListener('change',()=>{const roomId=Number(picker.value);setCameraMode('free');const room=ROOMS[roomId];const center=new THREE.Vector3(room.x+room.w/2,0,room.z+room.d/2);controls.target.copy(center);camera.position.set(center.x+Math.max(5,room.w*1.2),Math.max(8,room.w*1.6),center.z+Math.max(7,room.d*1.6));controls.update();$('roomPickerHint').textContent='Visualizando: '+room.name+'. O progresso da rota permanece na etapa atual.';$('hudSmall').textContent='Explorando '+room.name+'. Para continuar, use Concluir etapa no percurso.';});
+ $('dockAction').onclick=()=>{if(completionShown){resetSimulation();togglePlay();}else if(!playing&&!movingToStep)togglePlay();else completeCurrentStep();};$('dockSteps').onclick=()=>document.querySelector('.step-box').scrollIntoView({behavior:'smooth',block:'center'});
+ $('showAll').onclick=()=>{ROUTES.forEach(r=>selectedRoutes.add(r.id));syncCheckboxes();syncRouteVisibility();updateDock();}; $('hideAll').onclick=$('clearRoutes').onclick=()=>{selectedRoutes.clear();syncCheckboxes();syncRouteVisibility();stopSimulation();updateStepUI();updateDock();};
+ $('playBtn').onclick=togglePlay;$('resetBtn').onclick=resetSimulation;$('prevStep').onclick=reviewPreviousStep;$('nextStep').onclick=completeCurrentStep;$('speedBtn').onclick=cycleSpeed;
+ document.querySelectorAll('[data-camera]').forEach(b=>{b.setAttribute('aria-pressed','false');b.onclick=()=>setCameraMode(b.dataset.camera);});$('fitBtn').onclick=()=>setCameraMode('overview');$('labelsBtn').onclick=()=>{labelsVisible=!labelsVisible;updateLabels();$('labelsBtn').textContent=labelsVisible?'🏷 Rótulos':'🏷 Ocultos';};
+ $('helpBtn').onclick=()=>{$('helpModal').classList.add('show');$('closeHelp').focus();};$('closeHelp').onclick=()=>$('helpModal').classList.remove('show');$('helpModal').onclick=e=>{if(e.target===$('helpModal'))$('helpModal').classList.remove('show');};document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('helpModal').classList.contains('show')){$('helpModal').classList.remove('show');$('helpBtn').focus();}});
+ $('presentationBtn').onclick=()=>{document.body.classList.toggle('presentation');$('presentationBtn').setAttribute('aria-pressed',String(document.body.classList.contains('presentation')));setTimeout(resize,80);};$('fullscreenBtn').onclick=toggleFullscreen;$('replayBtn').onclick=()=>{completionShown=false;$('completeBox').classList.remove('show');routeProgress=0;currentStep=0;stepCompleted=new Array(activeRoute().stops.length).fill(false);playing=true;movingToStep=false;showArrival(activeRoute().stops[currentStep]);$('playBtn').disabled=true;$('playBtn').textContent='Etapa em execução';placePharmacist();updateStepUI();highlightMarkers();};$('overviewBtn').onclick=()=>{setCameraMode('overview');$('completeBox').classList.remove('show');};
+}
+function syncCheckboxes(){document.querySelectorAll('[data-route]').forEach(cb=>{cb.checked=selectedRoutes.has(cb.dataset.route);cb.closest('.route-card').classList.toggle('active',cb.checked);cb.closest('.route-card').classList.toggle('current-route',ROUTES[activeRouteIndex]?.id===cb.dataset.route&&cb.checked);});}
+function syncRouteVisibility(){ROUTES.forEach(r=>{const g=routeGroups.get(r.id);if(g)g.visible=selectedRoutes.has(r.id);});updateLabels();}
+function cacheMaterialState(mat){if(!mat||mat.userData._roomBase)return;mat.userData._roomBase={color:mat.color?mat.color.clone():null,emissive:mat.emissive?mat.emissive.clone():null,emissiveIntensity:mat.emissiveIntensity||0,opacity:mat.opacity,transparent:mat.transparent};}
+function setRoomVisualState(roomId){
+ const current=activeRoute()?.stops?.[currentStep];
+ roomVisuals.forEach((objects,i)=>{
+   const active=i===roomId;
+   objects.forEach(obj=>obj.traverse?.(node=>{
+     if(!node.material||node.type==='Sprite')return;
+     const mats=Array.isArray(node.material)?node.material:[node.material];
+     mats.forEach(mat=>{cacheMaterialState(mat);const b=mat.userData._roomBase;if(!b)return;
+       if(b.color&&mat.color){mat.color.copy(b.color); if(cameraMode==='follow'&&!active)mat.color.multiplyScalar(.72); else if(active)mat.color.multiplyScalar(1.06);}
+       if(mat.emissive&&b.emissive){mat.emissive.copy(b.emissive);mat.emissiveIntensity=active?Math.max(b.emissiveIntensity,.12):b.emissiveIntensity;}
+     });
+   }));
+ });
+}
+function restoreRoomVisuals(){roomVisuals.forEach(objects=>objects.forEach(obj=>obj.traverse?.(node=>{if(!node.material||node.type==='Sprite')return;const mats=Array.isArray(node.material)?node.material:[node.material];mats.forEach(mat=>{const b=mat.userData?._roomBase;if(!b)return;if(b.color&&mat.color)mat.color.copy(b.color);if(mat.emissive&&b.emissive){mat.emissive.copy(b.emissive);mat.emissiveIntensity=b.emissiveIntensity;}});})));}
+function setActiveRoute(index,autoSelect=true){stopSimulation();activeRouteIndex=index;const r=ROUTES[index];if(autoSelect&&!selectedRoutes.has(r.id)){selectedRoutes.add(r.id);syncCheckboxes();syncRouteVisibility();}currentPathData=buildPathData(r.stops);currentPoints=currentPathData.points;currentStepProgresses=currentPathData.stopProgresses;routeProgress=0;currentStep=0;lastRoom=-1;completionShown=false;movingToStep=false;targetStep=0;stepCompleted=new Array(r.stops.length).fill(false);$('completeBox').classList.remove('show');placePharmacist();syncCheckboxes();updateStepUI();$('hudTitle').textContent=r.name;$('hudSmall').textContent=r.objective;highlightMarkers();updateContentPanels();setRoomVisualState(r.stops[currentStep]);}
+function activeRoute(){return ROUTES[activeRouteIndex];}
+function togglePlay(){
+ if(!selectedRoutes.size){$('hudSmall').textContent='Selecione pelo menos uma rota para iniciar.';updateDock();document.getElementById('routeList').scrollIntoView({behavior:'smooth',block:'center'});return;}
+ if(!selectedRoutes.has(activeRoute().id)){const first=ROUTES.findIndex(r=>selectedRoutes.has(r.id));if(first>=0)setActiveRoute(first,false);}
+ if(completionShown){resetSimulation();}
+ playing=true;movingToStep=false;$('playBtn').textContent='Etapa em execução';$('playBtn').disabled=true;
+ if(cameraMode==='overview')setCameraMode('follow');announceRoom(activeRoute().stops[currentStep]);showArrival(activeRoute().stops[currentStep]);updateStepUI();highlightMarkers();updateContentPanels();setRoomVisualState(activeRoute().stops[currentStep]);
+}
+function stopSimulation(){$('arrivalPanel').hidden=true;$('reopenArrival').hidden=true;$('arrivalModal').classList.remove('show');arrivalAcknowledged=false;playing=false;movingToStep=false;$('playBtn').textContent='▶ Iniciar percurso';$('playBtn').disabled=false;updateDock();}
+function resetSimulation(){stopSimulation();routeProgress=0;currentStep=0;lastRoom=-1;completionShown=false;movingToStep=false;targetStep=0;stepCompleted=new Array(activeRoute().stops.length).fill(false);$('completeBox').classList.remove('show');placePharmacist();updateStepUI();highlightMarkers();updateContentPanels();setCameraMode('overview');restoreRoomVisuals();}
+function reviewPreviousStep(){ $('hudSmall').textContent='As etapas anteriores permanecem encerradas. Continue pela etapa atual.'; }
+$('arrivalContinue').addEventListener('click',closeArrival);
+$('panelConfirm').addEventListener('click',closeArrival);
+$('panelDismiss').addEventListener('click',closeArrival);
+$('reopenArrival').addEventListener('click',()=>{$('arrivalPanel').hidden=false;$('reopenArrival').hidden=true;});
+function completeCurrentStep(){
+ const r=activeRoute();if(!playing||movingToStep||completionShown||!arrivalAcknowledged)return;
+ stepCompleted[currentStep]=true;
+ if(currentStep>=r.stops.length-1){$('arrivalPanel').hidden=true;$('reopenArrival').hidden=true;routeProgress=1;playing=false;completionShown=true;$('playBtn').disabled=false;$('playBtn').textContent='▶ Reproduzir novamente';$('completeBox').classList.add('show');updateStepUI();highlightMarkers();return;}
+ targetStep=currentStep+1;segmentStart=routeProgress;segmentTarget=currentStepProgresses[targetStep]??1;movingToStep=true;$('nextStep').disabled=true;$('prevStep').disabled=true;$('stepStatus').textContent='Etapa concluída. Deslocando para a próxima etapa…';$('stepStatus').className='step-status moving';$('playBtn').textContent='Caminhando para a próxima etapa';updateDock();
+ if(cameraMode==='overview')setCameraMode('follow');
+}
+function jumpStep(step){/* Navegação direta desativada para preservar a sequência obrigatória. */}
+function cycleSpeed(){const options=[.25,.35,.5,.75,1];const i=options.findIndex(v=>Math.abs(v-speed)<.001);speed=options[(i+1)%options.length];$('speedBtn').textContent=String(speed).replace('.',',')+'×';$('speedBtn').title='Velocidade do personagem: '+speed+'×';}
+function placePharmacist(){if(!currentPathData)return;const p=getPointAlongPath(currentPathData,Math.max(0,Math.min(1,routeProgress)));pharmacist.position.set(p.x,.03,p.z);const dir=getDirectionAlongPath(currentPathData,routeProgress);if(dir.lengthSq()>.0001)pharmacist.rotation.y=Math.atan2(dir.x,dir.z);}
+function updateSimulation(dt,t){
+ if(!currentPathData)return;
+ if(movingToStep){
+  routeProgress=Math.min(segmentTarget,routeProgress+dt*.17*speed);
+  if(routeProgress>=segmentTarget-.0005){routeProgress=segmentTarget;movingToStep=false;currentStep=targetStep;lastRoom=-1;$('playBtn').textContent='Etapa em execução';announceRoom(activeRoute().stops[currentStep]);showArrival(activeRoute().stops[currentStep]);updateStepUI();highlightMarkers();updateContentPanels();setRoomVisualState(activeRoute().stops[currentStep]);}
+  placePharmacist();animateBody(t);updateProgressOnly();return;
+ }
+ placePharmacist();animateBody(t);updateProgressOnly();
+}
+function updateDock(){const action=$('dockAction');if(!action)return;const route=activeRoute();const hasRoute=selectedRoutes.size>0;const finished=completionShown;const moving=movingToStep;action.disabled=moving||(playing&&!finished&&!arrivalAcknowledged);action.textContent=finished?'↻ Refazer percurso':moving?'🚶 Em deslocamento':playing?(currentStep===route.stops.length-1?'✓ Concluir processo':'✓ Concluir etapa'):'▶ Iniciar percurso';$('dockLabel').textContent=!hasRoute?'Escolha uma rota para começar':finished?'Percurso concluído':`Etapa ${currentStep+1}/${route.stops.length} · ${ROOMS[route.stops[currentStep]].name}`;}
+function updateProgressOnly(){const r=activeRoute();if(!r)return;const completed=stepCompleted.filter(Boolean).length;const pct=Math.round((completed/r.stops.length)*100);$('progressPct').textContent=pct+'%';$('progressBar').style.width=pct+'%';$('progressText').textContent=completionShown?'Concluído':(movingToStep?'Deslocando para próxima etapa':(playing?'Etapa atual em execução':'Aguardando início'));}
+function animateBody(t){const walk=movingToStep?Math.sin(t*.007*speed):0;bodyParts.legL.rotation.x=walk*.65;bodyParts.legR.rotation.x=-walk*.65;bodyParts.armL.rotation.x=-walk*.48;bodyParts.armR.rotation.x=walk*.48;}
+function updateStepUI(reviewOnly=false){
+ const r=activeRoute();if(!r)return;const roomId=r.stops[currentStep]??r.stops[0];const total=r.stops.length;
+ $('stepKicker').textContent=`Etapa ${currentStep+1} de ${total}`;$('stepTitle').textContent=ROOMS[roomId].name;$('stepDesc').textContent=STEP_TEXT[roomId]||r.description;
+ const done=!!stepCompleted[currentStep];const status=$('stepStatus');
+ if(reviewOnly){status.textContent='Visualização de uma etapa anterior. Volte à etapa atual concluída para continuar o processo.';status.className='step-status';}
+ else if(completionShown){status.textContent='Processo concluído: todas as etapas foram encerradas em sequência.';status.className='step-status done';}
+ else if(movingToStep){status.textContent='Etapa concluída. Deslocando para a próxima etapa…';status.className='step-status moving';}
+ else if(done){status.textContent='Etapa concluída.';status.className='step-status done';}
+ else if(playing&&!arrivalAcknowledged){status.textContent='Leia o aviso do ambiente e clique em “Entendi, iniciar esta etapa”.';status.className='step-status';}
+ else{status.textContent='Execute esta etapa e clique em “Concluir etapa” para liberar a próxima.';status.className='step-status';}
+ $('prevStep').disabled=true;$('nextStep').disabled=!playing||movingToStep||completionShown||!arrivalAcknowledged;$('nextStep').textContent=currentStep===total-1?'✓ Concluir processo':'✓ Concluir etapa';updateDock();
+ renderEnvironment(roomId);updateProgressOnly();
+}
+function renderEnvironment(roomId){const host=$('environmentList');const items=ROOM_CONTENTS[roomId]||[];host.innerHTML=items.map(([name,desc])=>`<div class="environment-item"><span>•</span><div><b>${name}</b><br>${desc}</div></div>`).join('')||'<div class="environment-item">Nenhum item cadastrado para este ambiente.</div>';}
+function highlightMarkers(){ROUTES.forEach((r,ri)=>{const markers=stepMarkers.get(r.id)||[];markers.forEach((m,si)=>{const active=ri===activeRouteIndex&&selectedRoutes.has(r.id);const on=active&&si===currentStep;const done=active&&!!stepCompleted[si];m.scale.setScalar(on?1.55:(done?1.15:.82));m.material.emissiveIntensity=on?.85:(done?.38:.06);m.material.transparent=true;m.material.opacity=active?(on?1:(done?.72:.28)):.32;});});}
+function announceRoom(roomId){const n=$('roomNotice');n.textContent='Você está entrando em: '+ROOMS[roomId].name;n.classList.remove('show');void n.offsetWidth;n.classList.add('show');}
+function updateLabels(){const activeRooms=new Set();selectedRoutes.forEach(id=>{const r=ROUTES.find(x=>x.id===id);if(r)r.stops.forEach(s=>activeRooms.add(s));});labels.forEach((l,i)=>{l.visible=labelsVisible&&(activeRooms.size===0?true:activeRooms.has(i));});updateContentPanels(activeRooms);}
+function updateContentPanels(activeRooms){const rooms=activeRooms||(()=>{const s=new Set();selectedRoutes.forEach(id=>{const r=ROUTES.find(x=>x.id===id);if(r)r.stops.forEach(stop=>s.add(stop));});return s;})();contentPanels.forEach((p,i)=>{const isCurrent=activeRoute()&&activeRoute().stops[currentStep]===i;const show=labelsVisible&&(cameraMode!=='follow'||isCurrent)&&(rooms.size===0?true:rooms.has(i));p.visible=show;p.material.opacity=isCurrent?1:.94;p.position.y=isCurrent?1.33:1.16;});}
+function setCameraMode(mode){cameraMode=mode;document.querySelectorAll('[data-camera]').forEach(b=>{const active=b.dataset.camera===mode;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});controls.enabled=mode==='free';if(mode==='overview'){restoreRoomVisuals();camera.position.set(13.5,53,70);controls.target.set(13.5,0,20);controls.enabled=true;controls.update();}else if(mode==='free'){restoreRoomVisuals();controls.enabled=true;controls.target.copy(pharmacist.position).add(new THREE.Vector3(0,1.25,0));controls.update();}else{controls.enabled=false;setRoomVisualState(activeRoute()?.stops?.[currentStep]);}updateContentPanels();}
+function updateCamera(dt){if(cameraMode!=='follow'||!pharmacist)return;const lerp=1-Math.pow(.001,dt);let desired,target;
+ if(!movingToStep&&activeRoute()){
+   const room=ROOMS[activeRoute().stops[currentStep]];const cx=room.x+room.w/2,cz=room.z+room.d/2;
+   const span=Math.max(room.w,room.d);desired=new THREE.Vector3(cx+Math.min(2.8,room.w*.26),Math.max(8.2,span*1.25),room.z-Math.max(7.5,room.d*1.3));
+   target=new THREE.Vector3((cx+pharmacist.position.x)/2,1.05,(cz+pharmacist.position.z)/2);
+ }else{
+   const forward=new THREE.Vector3(0,0,1).applyQuaternion(pharmacist.quaternion).normalize();const side=new THREE.Vector3(forward.z,0,-forward.x).normalize();desired=pharmacist.position.clone().add(forward.clone().multiplyScalar(-8.4)).add(side.multiplyScalar(1.35)).add(new THREE.Vector3(0,5.6,0));target=pharmacist.position.clone().add(new THREE.Vector3(0,1.55,0));
+ }
+ camera.position.lerp(desired,lerp*.3);const look=controls.target.clone().lerp(target,lerp*.48);controls.target.copy(look);camera.lookAt(look);}
+
+function onPick(ev){const rect=renderer.domElement.getBoundingClientRect();mouse.x=((ev.clientX-rect.left)/rect.width)*2-1;mouse.y=-((ev.clientY-rect.top)/rect.height)*2+1;raycaster.setFromCamera(mouse,camera);const hits=raycaster.intersectObjects(interactive,true);if(!hits.length)return;let obj=hits[0].object;while(obj&&!obj.userData?.kind)obj=obj.parent;if(!obj||!obj.userData?.kind)return;const d=obj.userData;$('hudTitle').textContent=d.name||'Elemento do ambiente';$('hudSmall').textContent=d.info||'Sem descrição cadastrada.';if(d.kind==='room'){const idx=ROOMS.findIndex(r=>r.name===d.name);if(idx>=0){renderEnvironment(idx);announceRoom(idx);}}}
+function resize(){
+ const host=$('scene');if(!host||!camera||!renderer)return;
+ const bounds=host.getBoundingClientRect(),w=Math.max(1,Math.round(bounds.width)),h=Math.max(1,Math.round(bounds.height));
+ if(w<2||h<2)return;
+ const dpr=Math.min(window.devicePixelRatio||1,limitedHardware?1.35:mobileHardware?1.8:2);
+ if(w===lastViewportWidth&&h===lastViewportHeight&&dpr===lastPixelRatio)return;
+ lastViewportWidth=w;lastViewportHeight=h;lastPixelRatio=dpr;
+ camera.aspect=w/h;
+ // O enquadramento muda com a proporção da tela, sem deformar objetos 3D.
+ camera.fov=w/h<.8?68:w/h<1.2?63:58;
+ camera.updateProjectionMatrix();renderer.setPixelRatio(dpr);renderer.setSize(w,h,false);
+}
+async function toggleFullscreen(){const el=document.documentElement;try{if(!document.fullscreenElement){document.body.classList.remove('presentation');$('presentationBtn').setAttribute('aria-pressed','false');if(el.requestFullscreen)await el.requestFullscreen();}else if(document.exitFullscreen){await document.exitFullscreen();}setTimeout(resize,60);}catch(err){console.warn('Não foi possível alternar a tela cheia:',err);$('hudSmall').textContent='Seu navegador bloqueou o modo de tela cheia.';}}
+function animate(t=0){if(webglContextLost)return;animationFrameId=requestAnimationFrame(animate);const dt=Math.min(.05,clock.getDelta());if(document.hidden){return;}updateSimulation(dt,t);updateCamera(dt);if(controls.enabled)controls.update();renderer.render(scene,camera);}
+window.addEventListener('error',e=>console.warn('Farmácia Tech Learning:',e.message));
+init();
+})();
+</script>
+<script>
+// V55: alternância acessível entre rotas e execução, sem alterar os IDs do motor 3D.
+(function setupSidebarTabs(){
+ const tabs=[document.getElementById('tabRoutes'),document.getElementById('tabStages')];
+ const panels=[document.getElementById('panelRoutes'),document.getElementById('panelStages')];
+ window.showSimulatorTab=function(index){
+  tabs.forEach((tab,i)=>{const active=i===index;tab.classList.toggle('active',active);tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;panels[i].classList.toggle('active',active);});
+ };
+ tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>window.showSimulatorTab(i));tab.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();const next=(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length;window.showSimulatorTab(next);tabs[next].focus();}});});
+ const start=document.getElementById('playBtn');
+ start.addEventListener('click',()=>window.showSimulatorTab(1));
+ document.getElementById('resetBtn').addEventListener('click',()=>window.showSimulatorTab(0));
+})();
+</script>
+</body>
+</html>
